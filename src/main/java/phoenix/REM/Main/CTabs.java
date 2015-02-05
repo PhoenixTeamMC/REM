@@ -10,7 +10,7 @@ import net.minecraft.item.Item;
  * Created by Elec332 on 5-2-2015.
  */
 public class CTabs {
-    public static CreativeTabs TabMain = new net.minecraft.creativetab.CreativeTabs("TabMain") {
+    public static CreativeTabs TabMain = new CreativeTabs(localise("TabMain")) {
         @Override
         @SideOnly(Side.CLIENT)
         public Item getTabIconItem()
@@ -18,4 +18,8 @@ public class CTabs {
             return Item.getItemFromBlock(Blocks.anvil);
         }
     };
+
+    static String localise(String name){
+        return REMMod.modID + name;
+    }
 }

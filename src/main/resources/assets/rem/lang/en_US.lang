@@ -1,0 +1,8 @@
+##Tabs
+itemGroup.REM.TabMain=REM CreativeTab
+
+##Items
+item.REM.wrench.name=Wrench
+
+##Blocks
+tile.REM.test.name=TestBlock

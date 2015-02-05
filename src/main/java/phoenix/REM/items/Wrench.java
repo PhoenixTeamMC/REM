@@ -36,16 +36,19 @@ public class Wrench extends Item {
 
     public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int x, int y, int z, int side, float HitX, float HitY, float HitZ) {
         Block block = world.getBlock(x, y, z);
-        if (block instanceof IWrenchable){
-            if (player.isSneaking()) {
-                world.setBlockToAir(x, y, z);
-                world.spawnEntityInWorld(new EntityItem(world, x, y, z, ((IWrenchable) block).ItemDropped()));
+        if (!world.isRemote) {
+            if (block instanceof IWrenchable) {
+                if (player.isSneaking()) {
+                    world.setBlockToAir(x, y, z);
+                    world.spawnEntityInWorld(new EntityItem(world, x, y, z, ((IWrenchable) block).ItemDropped()));
+                } else {
+                    ((IWrenchable) block).onWrenched();
+                }
+                itemStack.setItemDamage((itemStack.getItemDamage()-1));
                 return true;
-            } else {
-                ((IWrenchable) block).onWrenched();
-                return  true;
             }
-        }
+        } else if (block instanceof IWrenchable)
+            return true;
         return false;
     }
 }
