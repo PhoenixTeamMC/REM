@@ -8,7 +8,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import phoenix.REM.API.wrench.IWrenchable;
-import phoenix.REM.Main.CreativeTabs;
+import phoenix.REM.Main.CTabs;
 import phoenix.REM.Main.REMMod;
 
 /**
@@ -16,7 +16,7 @@ import phoenix.REM.Main.REMMod;
  */
 public class Wrench extends Item {
     public Wrench(String name) {
-        setCreativeTab(CreativeTabs.TabMain);
+        setCreativeTab(CTabs.TabMain);
         setUnlocalizedName(REMMod.modID + "." + name);
         setTextureName(REMMod.modID + ":" + name);
         setContainerItem(this);
@@ -39,7 +39,7 @@ public class Wrench extends Item {
         if (block instanceof IWrenchable){
             if (player.isSneaking()) {
                 world.setBlockToAir(x, y, z);
-                new EntityItem(world, HitX, HitY, HitZ, ((IWrenchable) block).ItemDropped());
+                world.spawnEntityInWorld(new EntityItem(world, x, y, z, ((IWrenchable) block).ItemDropped()));
                 return true;
             } else {
                 ((IWrenchable) block).onWrenched();

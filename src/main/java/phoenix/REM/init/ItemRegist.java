@@ -10,6 +10,6 @@ public class ItemRegist {
     public static final ItemRegist instance = new ItemRegist();
 
     public void init(){
-
+        new Wrench("wrench");
     }
 }
