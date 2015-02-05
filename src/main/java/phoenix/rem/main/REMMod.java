@@ -1,4 +1,4 @@
-package phoenix.REM.Main;
+package phoenix.rem.main;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -11,8 +11,8 @@ import elec332.core.helper.ModInfoHelper;
 import elec332.core.modBaseUtils.ModBase;
 import elec332.core.modBaseUtils.modInfo;
 import elec332.core.proxies.CommonProxy;
-import phoenix.REM.init.BlockRegist;
-import phoenix.REM.init.ItemRegist;
+import phoenix.rem.init.BlockRegist;
+import phoenix.rem.init.ItemRegist;
 
 import java.io.File;
 

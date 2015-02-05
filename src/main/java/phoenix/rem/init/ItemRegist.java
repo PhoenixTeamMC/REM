@@ -1,6 +1,6 @@
-package phoenix.REM.init;
+package phoenix.rem.init;
 
-import phoenix.REM.items.Wrench;
+import phoenix.rem.items.Wrench;
 
 /**
  * Created by Elec332 on 5-2-2015.

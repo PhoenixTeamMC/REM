@@ -1,4 +1,4 @@
-package phoenix.REM.API.wrench;
+package phoenix.rem.api.wrench;
 
 import net.minecraft.item.ItemStack;
 

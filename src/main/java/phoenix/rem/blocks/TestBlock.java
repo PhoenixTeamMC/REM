@@ -1,4 +1,4 @@
-package phoenix.REM.blocks;
+package phoenix.rem.blocks;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -7,9 +7,9 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import phoenix.REM.API.wrench.IWrenchable;
-import phoenix.REM.Main.CTabs;
-import phoenix.REM.Main.REMMod;
+import phoenix.rem.api.wrench.IWrenchable;
+import phoenix.rem.main.CTabs;
+import phoenix.rem.main.REMMod;
 
 import java.util.Random;
 

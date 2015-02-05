@@ -1,4 +1,4 @@
-package phoenix.REM.items;
+package phoenix.rem.items;
 
 import elec332.core.helper.RegisterHelper;
 import net.minecraft.block.Block;
@@ -7,9 +7,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import phoenix.REM.API.wrench.IWrenchable;
-import phoenix.REM.Main.CTabs;
-import phoenix.REM.Main.REMMod;
+import phoenix.rem.api.wrench.IWrenchable;
+import phoenix.rem.main.CTabs;
+import phoenix.rem.main.REMMod;
 
 /**
  * Created by Elec332 on 5-2-2015.
