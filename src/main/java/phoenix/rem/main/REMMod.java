@@ -48,6 +48,7 @@ public class REMMod extends ModBase {
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
+        proxy.registerTileEntities();
         ItemRegist.instance.init();
         BlockRegist.instance.init();
 
