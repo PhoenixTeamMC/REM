@@ -1,6 +1,9 @@
 package phoenix.rem.proxies;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.common.MinecraftForge;
+import phoenix.rem.handler.EventHandlerCommon;
 //import phoenix.rem.blocks.test.TestBlockTE;
 
 /**
@@ -8,6 +11,8 @@ import cpw.mods.fml.common.registry.GameRegistry;
  */
 public class CommonProxy {
     public void registerHandlers(){
+        FMLCommonHandler.instance().bus().register(new EventHandlerCommon());
+        MinecraftForge.EVENT_BUS.register(new EventHandlerCommon());
     }
 
     public void registerTileEntities(){
