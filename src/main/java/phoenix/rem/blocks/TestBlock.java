@@ -2,11 +2,13 @@ package phoenix.rem.blocks;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import elec332.core.helper.RegisterHelper;
+import elec332.repack.core.helper.RegisterHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.IIcon;
 import phoenix.rem.api.wrench.IWrenchable;
 import phoenix.rem.main.CTabs;
 import phoenix.rem.main.REMMod;
@@ -18,13 +20,14 @@ import java.util.Random;
  */
 public class TestBlock extends Block implements IWrenchable{
     public TestBlock(String name) {
-        super(Material.rock);
+        super(Material.circuits);
         setBlockName(REMMod.modID + "." + name);
         setCreativeTab(CTabs.TabMain);
         this.name = name;
         RegisterHelper.registerBlock(this, name);
     }
 
+    public IIcon[] icons = new IIcon[6];
     String name;
 
     @Override
@@ -33,6 +36,12 @@ public class TestBlock extends Block implements IWrenchable{
         return REMMod.modID + ":" + name;
     }
 
+    @Override
+    public void registerBlockIcons(IIconRegister register) {
+        for (int i = 0; i < 6; i ++) {
+            this.icons[i] = register.registerIcon(this.getTextureName() + "_" + i);
+        }
+    }
 
     @Override
     public int quantityDropped(Random random){
@@ -41,12 +50,11 @@ public class TestBlock extends Block implements IWrenchable{
 
     @Override
     public Item getItemDropped(int par1, Random rand, int par2){
-        return Item.getItemFromBlock(this);
+        return null;
     }
 
     @Override
     public ItemStack ItemDropped() {
-        //return new ItemStack(this);
         return new ItemStack(this);
     }
 

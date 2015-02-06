@@ -1,6 +1,6 @@
 package phoenix.rem.items;
 
-import elec332.core.helper.RegisterHelper;
+import elec332.repack.core.helper.RegisterHelper;
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;

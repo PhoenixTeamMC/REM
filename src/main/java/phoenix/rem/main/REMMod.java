@@ -9,7 +9,7 @@ import elec332.repack.core.helper.FileHelper;
 import elec332.repack.core.helper.MCModInfo;
 import elec332.repack.core.helper.ModInfoHelper;
 import elec332.repack.core.modBaseUtils.ModBase;
-import phoenix.rem.Data.ModInfo;
+import phoenix.rem.data.ModInfo;
 import phoenix.rem.init.BlockRegist;
 import phoenix.rem.init.ItemRegist;
 import phoenix.rem.proxies.CommonProxy;
@@ -35,8 +35,13 @@ public class REMMod extends ModBase {
         this.modID = ModInfoHelper.getModID(event);
         this.cfgFile = FileHelper.getConfigFileElec(event);
         loadConfiguration();
+        if (developmentEnvironment) {
+            info("Running in Dev enviroment, enabling dev features.");
+        } else { runUpdateCheck(event, "https://raw.githubusercontent.com/PhoenixTeamMC/REM/master/gradle.properties"); }
+        proxy.registerHandlers();
 
-        MCModInfo.CreateMCModInfo(event, "Created by chbachman & Elec332", "Description",
+
+        MCModInfo.CreateMCModInfo(event, "Created by Elec332 & chbachman", "Description",
                 "Loading URL...", "assets/rem/logo.png", new String[] {"Elec332", "chbachman"});
         notifyEvent(event);
     }
@@ -46,11 +51,15 @@ public class REMMod extends ModBase {
         ItemRegist.instance.init();
         BlockRegist.instance.init();
 
+
+
         notifyEvent(event);
     }
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event){
+
+
 
         notifyEvent(event);
     }
