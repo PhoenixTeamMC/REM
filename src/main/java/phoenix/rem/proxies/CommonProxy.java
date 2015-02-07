@@ -4,7 +4,7 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraftforge.common.MinecraftForge;
 import phoenix.rem.handler.EventHandlerCommon;
-//import phoenix.rem.blocks.test.TestBlockTE;
+import phoenix.rem.blocks.test.TestBlockTE;
 
 /**
  * Created by Elec332 on 6-2-2015.
@@ -16,6 +16,6 @@ public class CommonProxy {
     }
 
     public void registerTileEntities(){
-        //GameRegistry.registerTileEntity(TestBlockTE.class, "Test");
+        GameRegistry.registerTileEntity(TestBlockTE.class, "Test");
     }
 }

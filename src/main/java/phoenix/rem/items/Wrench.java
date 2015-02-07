@@ -6,6 +6,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import phoenix.rem.api.wrench.IWrenchable;
@@ -38,13 +39,14 @@ public class Wrench extends Item {
 
     public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int x, int y, int z, int side, float HitX, float HitY, float HitZ) {
         Block block = world.getBlock(x, y, z);
+        TileEntity tile = world.getTileEntity(x, y, z);
         if (!world.isRemote) {
             if (block instanceof BaseBlockRotatable) {
                 if (player.isSneaking()) {
                     world.setBlockToAir(x, y, z);
                     world.spawnEntityInWorld(new EntityItem(world, x, y, z, ((IWrenchable) block).ItemDropped()));
                 } else {
-                    ((BaseBlockRotatable) block).rotate(world, x, y, z, side);
+                    block.rotateBlock(world, x, y, z, ForgeDirection.getOrientation(side));
                 }
                 itemStack.damageItem(1, player);
                 return true;
