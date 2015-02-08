@@ -3,8 +3,8 @@ package phoenix.rem.proxies;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraftforge.common.MinecraftForge;
-import phoenix.rem.handler.EventHandlerCommon;
 import phoenix.rem.blocks.test.TestBlockTE;
+import phoenix.rem.handler.EventHandlerCommon;
 
 /**
  * Created by Elec332 on 6-2-2015.

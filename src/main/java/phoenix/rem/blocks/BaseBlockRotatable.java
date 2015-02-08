@@ -2,7 +2,6 @@ package phoenix.rem.blocks;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -14,25 +13,18 @@ import net.minecraftforge.common.util.ForgeDirection;
 import phoenix.rem.api.wrench.IRotatable;
 import phoenix.rem.api.wrench.IWrenchable;
 import phoenix.rem.data.IConData;
-import phoenix.rem.main.REMMod;
 
 /**
  * Created by Elec332 on 6-2-2015.
  */
-public abstract class BaseBlockRotatable extends Block implements IWrenchable, ITileEntityProvider{
-    public BaseBlockRotatable(Material mat, String name){
-        super(mat);
+public abstract class BaseBlockRotatable extends BlockBase implements IWrenchable, ITileEntityProvider{
+    public BaseBlockRotatable(Material mat, String name) {
+        super(mat, name);
         this.name = name;
     }
 
     public IIcon[] icons = new IIcon[6];
     String name;
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    protected String getTextureName(){
-        return REMMod.modID + ":" + name;
-    }
 
     @Override
     public void registerBlockIcons(IIconRegister register) {
@@ -43,11 +35,10 @@ public abstract class BaseBlockRotatable extends Block implements IWrenchable, I
         }
     }
 
-    //@SideOnly(Side.CLIENT)
-    //public IIcon getIcon(int side, int meta)
-    //{
-    //  return this.icons[meta];
-    //}
+    @SideOnly(Side.CLIENT)
+    public IIcon getIcon(int side, int meta) {
+      return this.icons[side];
+    }
 
     public IIcon getIcon(IBlockAccess world, int x, int y, int z, int side) {
         IRotatable var6 = (IRotatable)world.getTileEntity(x, y, z);

@@ -5,7 +5,8 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import elec332.repack.core.helper.FileHelper;
+import cpw.mods.fml.common.registry.GameRegistry;
+import elec332.repack.core.config.ConfigCore;
 import elec332.repack.core.helper.MCModInfo;
 import elec332.repack.core.helper.ModInfoHelper;
 import elec332.repack.core.modBaseUtils.ModBase;
@@ -13,6 +14,7 @@ import phoenix.rem.data.ModInfo;
 import phoenix.rem.init.BlockRegist;
 import phoenix.rem.init.ItemRegist;
 import phoenix.rem.proxies.CommonProxy;
+import phoenix.rem.world.Ores;
 
 import java.io.File;
 
@@ -23,21 +25,21 @@ import java.io.File;
         acceptedMinecraftVersions = ModInfo.ACCEPTEDMCVERSIONS, useMetadata = true, canBeDeactivated = true)
 public class REMMod extends ModBase {
 
-
     @SidedProxy(clientSide = ModInfo.CLIENTPROXY, serverSide = ModInfo.COMMONPROXY)
     public static CommonProxy proxy;
 
     @Mod.Instance("REM")
     public static REMMod instance;
+    public static File baseFolder;
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         this.modID = ModInfoHelper.getModID(event);
-        this.cfgFile = FileHelper.getConfigFileElec(event);
+        this.baseFolder = new File(event.getModConfigurationDirectory(), "REM");
+        this.cfgFile = new File(baseFolder, "REM.cfg");
         loadConfiguration();
-        if (developmentEnvironment) {
-            info("Running in Dev enviroment, enabling dev features.");
-        } else { runUpdateCheck(event, "https://raw.githubusercontent.com/PhoenixTeamMC/REM/master/gradle.properties"); }
+        if (developmentEnvironment) { info("Running in Dev enviroment, enabling dev features."); }
+        else { runUpdateCheck(event, "https://raw.githubusercontent.com/PhoenixTeamMC/REM/master/gradle.properties"); }
         proxy.registerHandlers();
 
 
@@ -51,9 +53,10 @@ public class REMMod extends ModBase {
         proxy.registerTileEntities();
         ItemRegist.instance.init();
         BlockRegist.instance.init();
+        GameRegistry.registerWorldGenerator(new Ores(), 1000);
 
 
-
+        loadConfiguration();
         notifyEvent(event);
     }
 
@@ -61,10 +64,13 @@ public class REMMod extends ModBase {
     public void postInit(FMLPostInitializationEvent event){
 
 
-
+        loadConfiguration();
         notifyEvent(event);
     }
 
+    public static ConfigCore RemConfig(String s){
+        return new ConfigCore(new File(baseFolder, s + ".cfg"));
+    }
 
     File cfgFile;
     public static String modID;
