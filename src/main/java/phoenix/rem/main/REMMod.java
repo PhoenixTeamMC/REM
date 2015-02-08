@@ -10,6 +10,7 @@ import elec332.repack.core.config.ConfigCore;
 import elec332.repack.core.helper.MCModInfo;
 import elec332.repack.core.helper.ModInfoHelper;
 import elec332.repack.core.modBaseUtils.ModBase;
+import phoenix.rem.GUIFactory;
 import phoenix.rem.data.ModInfo;
 import phoenix.rem.init.BlockRegist;
 import phoenix.rem.init.ItemRegist;
@@ -22,7 +23,8 @@ import java.io.File;
  * Created by Elec332 on 5-2-2015.
  */
 @Mod(modid = "REM", name = "REM", dependencies = ModInfo.DEPENDENCIES,
-        acceptedMinecraftVersions = ModInfo.ACCEPTEDMCVERSIONS, useMetadata = true, canBeDeactivated = true)
+        acceptedMinecraftVersions = ModInfo.ACCEPTEDMCVERSIONS, useMetadata = true, canBeDeactivated = true,
+        guiFactory = "phoenix.rem.GUIFactory")
 public class REMMod extends ModBase {
 
     @SidedProxy(clientSide = ModInfo.CLIENTPROXY, serverSide = ModInfo.COMMONPROXY)
@@ -51,6 +53,8 @@ public class REMMod extends ModBase {
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
         proxy.registerTileEntities();
+        //@chbachman, if you crash, disable the line below.
+        proxy.registerRenderer();
         ItemRegist.instance.init();
         BlockRegist.instance.init();
         GameRegistry.registerWorldGenerator(new Ores(), 1000);

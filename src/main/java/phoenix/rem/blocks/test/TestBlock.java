@@ -1,4 +1,4 @@
-package phoenix.rem.blocks;
+package phoenix.rem.blocks.test;
 
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -7,6 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import phoenix.rem.blocks.BaseBlockRotatable;
 import phoenix.rem.blocks.test.TestBlockTE;
 
 import java.util.Random;

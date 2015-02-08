@@ -18,4 +18,5 @@ public class CommonProxy {
     public void registerTileEntities(){
         GameRegistry.registerTileEntity(TestBlockTE.class, "Test");
     }
+    public void registerRenderer(){}
 }
