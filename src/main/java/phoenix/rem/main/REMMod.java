@@ -54,7 +54,8 @@ public class REMMod extends ModBase {
     public void init(FMLInitializationEvent event) {
         proxy.registerTileEntities();
         //@chbachman, if you crash, disable the line below.
-        proxy.registerRenderer();
+        if (config.isEnabled("I_wanna_crash_on_startup", false))
+            proxy.registerRenderer();
         ItemRegist.instance.init();
         BlockRegist.instance.init();
         GameRegistry.registerWorldGenerator(new Ores(), 1000);
