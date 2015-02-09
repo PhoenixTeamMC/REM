@@ -8,5 +8,6 @@ import java.util.HashMap;
  * Created by Elec332 on 7-2-2015.
  */
 public class IConData {
+    @Deprecated
     public static HashMap<String, IIcon> IconRegistry = new HashMap<String, IIcon>();
 }

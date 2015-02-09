@@ -15,8 +15,8 @@ public abstract class BaseTileReceiver extends BaseTileRotatable implements IPow
                     EntityTNTPrimed boom = new EntityTNTPrimed(worldObj, xCoord, yCoord, zCoord, null);
                     boom.fuse = 0;
                     worldObj.spawnEntityInWorld(boom);
-                }
-            } else if (torque >= minTorque()) {
+                } else this.isBroken = true; //TODO: make wrench fix machine when broken
+            } else if ( speed >= 0 && torque >= minTorque()) {
                 this.speed = 0;
                 this.torque = 0;
                 return true;
