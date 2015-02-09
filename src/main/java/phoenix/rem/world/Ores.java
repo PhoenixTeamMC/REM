@@ -17,7 +17,7 @@ import java.util.Random;
  */
 public class Ores implements IWorldGenerator {
 
-    static WorldGenInfo TestInfo = ConfigHelper.INSTANCE.ConfigurableWorldGen("TestOre", 6);
+    static WorldGenInfo TestInfo = ConfigHelper.configurableWorldGen("TestOre", 6);
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {

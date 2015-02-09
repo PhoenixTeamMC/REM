@@ -1,56 +1,19 @@
 package elec332.repack.core.modBaseUtils;
 
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import elec332.repack.core.config.ConfigCore;
-import elec332.repack.core.handler.UpdateHandler;
-import elec332.repack.core.helper.LogHelper;
-import elec332.repack.core.helper.ModInfoHelper;
-import net.minecraft.launchwrapper.Launch;
-import net.minecraftforge.common.config.Configuration;
-
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 
+import net.minecraft.launchwrapper.Launch;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import elec332.repack.core.handler.UpdateHandler;
+import elec332.repack.core.helper.ModInfoHelper;
+
 /**
  * Created by Elec332.
  */
-public abstract class ModBase extends LogHelper {
-
-    protected abstract File configFile();
-
-    @Override
-    public abstract String modID();
-
-    public ConfigCore config;
-
-    public void loadConfiguration(){
-        if (config == null)
-            this.config = new ConfigCore(configFile());
-        config.syncConfiguration();
-    }
-
-    protected void notifyEvent(FMLPreInitializationEvent event){
-        info(modID() + " has " + event.getModState());
-    }
-    protected void notifyEvent(FMLInitializationEvent event){
-        info(modID() + " has " + event.getModState());
-    }
-    protected void notifyEvent(FMLPostInitializationEvent event){
-        info(modID() + " has " + event.getModState());
-    }
-
-    @Deprecated
-    public void loadConfiguration(Configuration config) {
-        config.load();
-        //if (config.hasChanged()){
-        config.save();
-        //}
-    }
+public abstract class ModBase{
 
     boolean outdated = false;
     boolean uptodate = false;

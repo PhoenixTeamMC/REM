@@ -1,6 +1,5 @@
 package phoenix.rem.items;
 
-import elec332.repack.core.helper.RegisterHelper;
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,8 +10,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import phoenix.rem.api.wrench.BaseTileRotatable;
 import phoenix.rem.api.wrench.IWrenchable;
+import phoenix.rem.data.ModInfo;
 import phoenix.rem.main.CTabs;
-import phoenix.rem.main.REMMod;
+import elec332.repack.core.helper.RegisterHelper;
 
 /**
  * Created by Elec332 on 5-2-2015.
@@ -20,8 +20,8 @@ import phoenix.rem.main.REMMod;
 public class Wrench extends Item {
     public Wrench(String name) {
         setCreativeTab(CTabs.TabMain);
-        setUnlocalizedName(REMMod.modID + "." + name);
-        setTextureName(REMMod.modID + ":" + name);
+        setUnlocalizedName(ModInfo.MODID + "." + name);
+        setTextureName(ModInfo.MODID + ":" + name);
         setContainerItem(this);
         setNoRepair();
         setMaxDamage(72);

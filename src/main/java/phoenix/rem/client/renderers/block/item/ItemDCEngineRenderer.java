@@ -25,27 +25,29 @@ public class ItemDCEngineRenderer implements IItemRenderer {
 
     @Override
     public boolean shouldUseRenderHelper(IItemRenderer.ItemRenderType type, ItemStack item, IItemRenderer.ItemRendererHelper helper) {
-        return true;
-    }
+		return true;
+	}
 
-    @Override
-    public void renderItem(IItemRenderer.ItemRenderType type, ItemStack item, Object... data) {
-        float scale = 0.08f;
-        switch (type) {
-            case ENTITY:
-                renderDCEngine((RenderBlocks) data[0], item, 0, 0, 0, scale);
-                break;
-            case EQUIPPED:
-                renderDCEngine((RenderBlocks) data[0], item, 0, 0, 0.5f, scale);
-                break;
-            case EQUIPPED_FIRST_PERSON:
-                renderDCEngine((RenderBlocks) data[0], item, +0.5f, 0.5f, +0.5f, scale);
-                break;
-            case INVENTORY:
-                renderDCEngine((RenderBlocks) data[0], item, -0.5f, -0.75f, -0.5f, scale);
-                break;
-        }
-    }
+	@Override
+	public void renderItem(IItemRenderer.ItemRenderType type, ItemStack item, Object... data){
+		float scale = 0.08f;
+		switch (type) {
+		case ENTITY:
+			renderDCEngine((RenderBlocks) data[0], item, 0, 0, 0, scale);
+			break;
+		case EQUIPPED:
+			renderDCEngine((RenderBlocks) data[0], item, 0, 0, 0.5f, scale);
+			break;
+		case EQUIPPED_FIRST_PERSON:
+			renderDCEngine((RenderBlocks) data[0], item, +0.5f, 0.5f, +0.5f, scale);
+			break;
+		case INVENTORY:
+			renderDCEngine((RenderBlocks) data[0], item, -0.5f, -0.75f, -0.5f, scale);
+			break;
+		default:
+			break;
+		}
+	}
 
     private void renderDCEngine(RenderBlocks render, ItemStack item, float x, float y, float z, float scale) {
         GL11.glPushMatrix();

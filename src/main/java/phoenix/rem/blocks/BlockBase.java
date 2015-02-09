@@ -1,8 +1,7 @@
 package phoenix.rem.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import elec332.repack.core.helper.RegisterHelper;
+import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -10,10 +9,11 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
+import phoenix.rem.data.ModInfo;
 import phoenix.rem.main.CTabs;
-import phoenix.rem.main.REMMod;
-
-import java.util.Random;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import elec332.repack.core.helper.RegisterHelper;
 
 /**
  * Created by Elec332 on 8-2-2015.
@@ -21,6 +21,15 @@ import java.util.Random;
 //This code is 99,9% copied from ElecCore, you can the code here:
 // https://github.com/Elecs-Mods/ElecCore/blob/05324a5ccd78443535af672886f8093778d24793/src/main/java/elec332/core/util/blocks/baseblock.java
 public class BlockBase extends Block {
+	
+
+    Boolean opaqueCube;
+    Item dropped;
+    boolean ghost;
+    String name;
+    static String modID = ModInfo.MODID;
+    int amountDropped;
+	
     public BlockBase(Material baseMaterial, String blockName) {
         super(baseMaterial);
         setBlockName(modID + "." + blockName);
@@ -34,10 +43,9 @@ public class BlockBase extends Block {
         setCreativeTab(CreativeTab);
     }
 
-    @Deprecated
     public BlockBase(Material baseMaterial, String blockName, CreativeTabs CreativeTab,  int setQuantityDropped) {
         this(baseMaterial, blockName, CreativeTab);
-        this.Dropped = setQuantityDropped;
+        this.amountDropped = setQuantityDropped;
     }
 
     public BlockBase setGhost(){
@@ -63,16 +71,9 @@ public class BlockBase extends Block {
     }
 
     public BlockBase setQuantityDropped(int setQuantityDropped){
-        this.Dropped = setQuantityDropped;
+        this.amountDropped = setQuantityDropped;
         return this;
     }
-
-    Boolean opaqueCube;
-    Item dropped;
-    boolean ghost;
-    String name;
-    String modID = REMMod.modID;
-    int Dropped;
 
     @Override
     @SideOnly(Side.CLIENT)
@@ -102,7 +103,7 @@ public class BlockBase extends Block {
 
     @Override
     public int quantityDropped(Random random){
-        return Dropped;
+        return amountDropped;
     }
 
     @Override

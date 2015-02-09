@@ -1,9 +1,9 @@
 package phoenix.rem.init;
 
+import phoenix.rem.REMMod;
 import phoenix.rem.items.Wrench;
 import phoenix.rem.items.test.MultiMeter;
 import phoenix.rem.main.CTabs;
-import phoenix.rem.main.REMMod;
 
 /**
  * Created by Elec332 on 5-2-2015.

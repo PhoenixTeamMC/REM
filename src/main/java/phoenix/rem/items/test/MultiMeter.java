@@ -1,6 +1,5 @@
 package phoenix.rem.items.test;
 
-import elec332.repack.core.helper.RegisterHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -8,8 +7,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 import phoenix.rem.api.power.BaseTileReceiver;
+import phoenix.rem.data.ModInfo;
 import phoenix.rem.main.CTabs;
-import phoenix.rem.main.REMMod;
+import elec332.repack.core.helper.RegisterHelper;
 
 /**
  * Created by Elec332 on 9-2-2015.
@@ -18,8 +18,8 @@ import phoenix.rem.main.REMMod;
 public class MultiMeter extends Item{
     public MultiMeter(String name) {
         setCreativeTab(CTabs.TabMain);
-        setUnlocalizedName(REMMod.modID + "." + name);
-        setTextureName(REMMod.modID + ":" + name);
+        setUnlocalizedName(ModInfo.MODID + "." + name);
+        setTextureName(ModInfo.MODID + ":" + name);
         setContainerItem(this);
         setMaxStackSize(1);
         RegisterHelper.registerItem(this, name);
