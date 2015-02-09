@@ -14,10 +14,11 @@ public class TEDCEngine extends BaseTileEngine {
             if (getPowerReceiver() instanceof IPowerReceiver)
                 tryToEmitPower((IPowerReceiver)getPowerReceiver());
         }
+        worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
     }
 
-    int speed = 4;
-    int torque = 2;
+    int speed = 30;
+    int torque = 20;
 
     public void tryToEmitPower(IPowerReceiver powerReceiver){
         powerReceiver.setSpeed(speed);

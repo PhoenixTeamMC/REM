@@ -12,11 +12,11 @@ public class TestBlockTE extends BaseTileReceiver{
 
     @Override
     public void updateEntity(){
-        if (canWork()) {
-            //if (!worldObj.isRemote) {
+        if (!worldObj.isRemote) {
+            if (canWork()) {
                 worldObj.spawnEntityInWorld(new EntityItem(worldObj, xCoord, yCoord, zCoord, new ItemStack(Items.baked_potato)));
-            worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
-            //}
+                worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+            }
         }
     }
 

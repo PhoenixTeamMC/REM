@@ -33,6 +33,24 @@ public class Engine extends BlockBase implements ITileEntityProvider, IWrenchabl
     }
 
     @Override
+    public boolean renderAsNormalBlock()
+    {
+        return false;
+    }
+
+    @Override
+    public int getRenderType()
+    {
+        return -1;
+    }
+
+    @Override
+    public boolean hasTileEntity()
+    {
+        return true;
+    }
+
+    @Override
     public ItemStack ItemDropped() {
         return new ItemStack(ItemBlock.getItemFromBlock(this));
     }

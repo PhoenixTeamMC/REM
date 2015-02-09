@@ -26,7 +26,7 @@ public class ModelDCEngine extends ModelBase {
     public void renderEngine(TEDCEngine engine, double x, double y, double z)
     {
         float scale = 0.1f;
-        int rotation = getRotation(engine);
+        Float rotation = getRotation(engine);
         GL11.glPushMatrix();
         GL11.glTranslatef((float) x + 0.5f, (float) y, (float) z + 0.5f);
         GL11.glRotatef(rotation, 0.0F, 1.0F, 0.0F);
