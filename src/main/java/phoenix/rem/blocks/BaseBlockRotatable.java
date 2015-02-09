@@ -18,6 +18,7 @@ import phoenix.rem.data.IConData;
  * Created by Elec332 on 6-2-2015.
  */
 public abstract class BaseBlockRotatable extends BlockBase implements IWrenchable, ITileEntityProvider{
+    @Deprecated
     public BaseBlockRotatable(Material mat, String name) {
         super(mat, name);
         this.name = name;

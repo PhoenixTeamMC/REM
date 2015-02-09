@@ -7,7 +7,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import phoenix.rem.api.power.IPowerReceiver;
+import phoenix.rem.api.wrench.IWrenchable;
 import phoenix.rem.blocks.BaseBlockRotatable;
+import phoenix.rem.blocks.BlockBase;
 import phoenix.rem.blocks.test.TestBlockTE;
 
 import java.util.Random;
@@ -15,7 +18,7 @@ import java.util.Random;
 /**
  * Created by Elec332 on 5-2-2015.
  */
-public class TestBlock extends BaseBlockRotatable implements ITileEntityProvider{
+public class TestBlock extends BlockBase implements ITileEntityProvider, IWrenchable{
     public TestBlock(String name) {
         super(Material.circuits, name);
     }
@@ -44,5 +47,7 @@ public class TestBlock extends BaseBlockRotatable implements ITileEntityProvider
     public TileEntity createNewTileEntity(World world, int var2) {
         return new TestBlockTE();
     }
+
+
 }
 
