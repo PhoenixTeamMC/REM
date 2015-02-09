@@ -11,6 +11,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import phoenix.rem.api.wrench.IWrenchable;
 import phoenix.rem.blocks.BaseBlockRotatable;
+import phoenix.rem.blocks.tile.BaseTileRotatable;
 import phoenix.rem.main.CTabs;
 import phoenix.rem.main.REMMod;
 
@@ -41,21 +42,22 @@ public class Wrench extends Item {
         Block block = world.getBlock(x, y, z);
         TileEntity tile = world.getTileEntity(x, y, z);
         if (!world.isRemote) {
-            if (block instanceof BaseBlockRotatable) {
+            if (block instanceof IWrenchable) {
                 if (player.isSneaking()) {
                     world.setBlockToAir(x, y, z);
                     world.spawnEntityInWorld(new EntityItem(world, x, y, z, ((IWrenchable) block).ItemDropped()));
-                } else {
-                    block.rotateBlock(world, x, y, z, ForgeDirection.getOrientation(side));
-                }
+                } /*else if (tile instanceof BaseTileRotatable){
+                    ((BaseTileRotatable) tile).rotateBlock(world, x, y, z);
+                }*/
                 itemStack.damageItem(1, player);
                 return true;
             } else if (block.rotateBlock(world, x, y, z, ForgeDirection.getOrientation(side))) {
                 itemStack.damageItem(1, player);
                 return true;
             }
-        } else if (block instanceof IWrenchable)
-            return true;
+        } else if (tile instanceof BaseTileRotatable) {
+            ((BaseTileRotatable) tile).rotateBlock(world, x, y, z);
+        }
         return false;
     }
 }

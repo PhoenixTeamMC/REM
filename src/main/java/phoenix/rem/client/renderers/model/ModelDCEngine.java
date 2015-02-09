@@ -1,7 +1,6 @@
 package phoenix.rem.client.renderers.model;
 
 import cpw.mods.fml.client.FMLClientHandler;
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.AdvancedModelLoader;
 import net.minecraftforge.client.model.IModelCustom;
@@ -27,8 +26,10 @@ public class ModelDCEngine extends ModelBase {
     public void renderEngine(TEDCEngine engine, double x, double y, double z)
     {
         float scale = 0.1f;
+        int rotation = getRotation(engine);
         GL11.glPushMatrix();
         GL11.glTranslatef((float) x + 0.5f, (float) y, (float) z + 0.5f);
+        GL11.glRotatef(rotation, 0.0F, 1.0F, 0.0F);
         GL11.glScalef(scale, scale, scale);
         ResourceLocation test = new ResourceLocation(REMMod.modID+":models/textures/test_0.png");
         FMLClientHandler.instance().getClient().renderEngine.bindTexture(test);
