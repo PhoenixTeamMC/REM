@@ -9,8 +9,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import phoenix.rem.api.wrench.BaseTileRotatable;
 import phoenix.rem.api.wrench.IWrenchable;
-import phoenix.rem.blocks.tile.BaseTileRotatable;
 import phoenix.rem.main.CTabs;
 import phoenix.rem.main.REMMod;
 

@@ -1,18 +1,13 @@
 package phoenix.rem.items.test;
 
 import elec332.repack.core.helper.RegisterHelper;
-import net.minecraft.block.Block;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
-import phoenix.rem.api.power.IPowerReceiver;
-import phoenix.rem.api.wrench.IWrenchable;
-import phoenix.rem.blocks.tile.BaseTileRotatable;
+import phoenix.rem.api.power.BaseTileReceiver;
 import phoenix.rem.main.CTabs;
 import phoenix.rem.main.REMMod;
 
@@ -40,8 +35,9 @@ public class MultiMeter extends Item{
 
     public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int x, int y, int z, int side, float HitX, float HitY, float HitZ) {
         TileEntity tileEntity = world.getTileEntity(x, y, z);
-        if (tileEntity instanceof IPowerReceiver) {
-            player.addChatComponentMessage(new ChatComponentText("Speed stored: " + ((IPowerReceiver) tileEntity).InternalSpeedStored()));
+        if (tileEntity instanceof BaseTileReceiver) {
+            player.addChatComponentMessage(new ChatComponentText("Speed : " + ((BaseTileReceiver) tileEntity).speed));
+            player.addChatComponentMessage(new ChatComponentText("Torque : " + ((BaseTileReceiver) tileEntity).torque));
             return true;
         }
         return false;

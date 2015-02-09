@@ -10,7 +10,6 @@ import elec332.repack.core.config.ConfigCore;
 import elec332.repack.core.helper.MCModInfo;
 import elec332.repack.core.helper.ModInfoHelper;
 import elec332.repack.core.modBaseUtils.ModBase;
-import phoenix.rem.GUIFactory;
 import phoenix.rem.data.ModInfo;
 import phoenix.rem.init.BlockRegist;
 import phoenix.rem.init.ItemRegist;

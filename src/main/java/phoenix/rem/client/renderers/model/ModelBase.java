@@ -2,7 +2,7 @@ package phoenix.rem.client.renderers.model;
 
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
-import phoenix.rem.blocks.tile.BaseTileRotatable;
+import phoenix.rem.api.wrench.BaseTileRotatable;
 
 /**
  * Created by Elec332 on 9-2-2015.

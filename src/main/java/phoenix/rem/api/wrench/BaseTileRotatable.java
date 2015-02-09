@@ -1,9 +1,8 @@
-package phoenix.rem.blocks.tile;
+package phoenix.rem.api.wrench;
 
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import phoenix.rem.api.wrench.IRotatable;
 
 /**
  * Created by Elec332 on 9-2-2015.

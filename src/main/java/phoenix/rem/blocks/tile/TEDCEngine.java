@@ -1,35 +1,26 @@
 package phoenix.rem.blocks.tile;
 
-import net.minecraft.util.IIcon;
-import phoenix.rem.api.power.IPowerProvider;
+import phoenix.rem.api.power.BaseTileEngine;
+import phoenix.rem.api.power.IPowerReceiver;
 
 /**
  * Created by Elec332 on 8-2-2015.
  */
-public class TEDCEngine extends BaseTileRotatable implements IPowerProvider{
+public class TEDCEngine extends BaseTileEngine {
 
     @Override
     public void updateEntity(){
-        if (worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord))
-            this.active = true;
-        else
-            this.active = false;
+        if (worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord)) {
+            if (getPowerReceiver() instanceof IPowerReceiver)
+                tryToEmitPower((IPowerReceiver)getPowerReceiver());
+        }
     }
 
-    boolean active = false;
+    int speed = 4;
+    int torque = 2;
 
-    @Override
-    public IIcon getTexture(int Side) {
-        return null;
-    }
-
-    @Override
-    public Integer Speed() {
-        return 3;
-    }
-
-    @Override
-    public Boolean isActive() {
-        return active;
+    public void tryToEmitPower(IPowerReceiver powerReceiver){
+        powerReceiver.setSpeed(speed);
+        powerReceiver.setTorque(torque);
     }
 }

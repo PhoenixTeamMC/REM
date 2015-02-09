@@ -7,11 +7,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import phoenix.rem.api.power.IPowerReceiver;
 import phoenix.rem.api.wrench.IWrenchable;
-import phoenix.rem.blocks.BaseBlockRotatable;
 import phoenix.rem.blocks.BlockBase;
-import phoenix.rem.blocks.test.TestBlockTE;
 
 import java.util.Random;
 
