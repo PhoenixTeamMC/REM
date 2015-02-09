@@ -10,11 +10,13 @@ public class TEDCEngine extends BaseTileEngine {
 
     @Override
     public void updateEntity(){
-        if (worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord)) {
-            if (getPowerReceiver() instanceof IPowerReceiver)
-                tryToEmitPower((IPowerReceiver)getPowerReceiver());
+        if (!worldObj.isRemote) {
+            if (worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord)) {
+                if (getPowerReceiver() instanceof IPowerReceiver)
+                    tryToEmitPower((IPowerReceiver) getPowerReceiver());
+            }
+            worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
         }
-        worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
     }
 
     int speed = 30;

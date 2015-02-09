@@ -50,12 +50,12 @@ public class Wrench extends Item {
                 }*/
                 itemStack.damageItem(1, player);
                 return true;
+            } else if (tile instanceof BaseTileRotatable) {
+                ((BaseTileRotatable) tile).rotateBlock(world, x, y, z);
             } else if (block.rotateBlock(world, x, y, z, ForgeDirection.getOrientation(side))) {
                 itemStack.damageItem(1, player);
                 return true;
             }
-        } else if (tile instanceof BaseTileRotatable) {
-            ((BaseTileRotatable) tile).rotateBlock(world, x, y, z);
         }
         return false;
     }
