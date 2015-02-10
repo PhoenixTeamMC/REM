@@ -1,7 +1,6 @@
 package phoenix.rem.api.power;
 
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.IIcon;
 import phoenix.rem.api.wrench.BaseTileRotatable;
 
 /**
@@ -20,13 +19,6 @@ public abstract class BaseTileEngine extends BaseTileRotatable{
             case EAST:
                 return worldObj.getTileEntity(xCoord + 1, yCoord, zCoord);
         }
-        return null;
-    }
-
-
-
-    @Override
-    public IIcon getTexture(int Side) {
         return null;
     }
 }

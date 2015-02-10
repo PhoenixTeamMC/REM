@@ -1,6 +1,5 @@
 package phoenix.rem.api.wrench;
 
-import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 /**
@@ -8,6 +7,4 @@ import net.minecraft.world.World;
  */
 public interface IRotatable {
     public Boolean rotateBlock(World world, int x, int y, int z);
-
-    public IIcon getTexture(int Side);
 }

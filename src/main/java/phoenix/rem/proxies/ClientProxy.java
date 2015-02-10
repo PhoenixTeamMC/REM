@@ -7,8 +7,8 @@ import net.minecraft.item.ItemBlock;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
 import phoenix.rem.blocks.tile.TEDCEngine;
-import phoenix.rem.client.renderers.block.TileDCEngineRenderer;
-import phoenix.rem.client.renderers.block.item.ItemDCEngineRenderer;
+import phoenix.rem.client.renderers.block.TileRedstoneEngineRenderer;
+import phoenix.rem.client.renderers.block.item.ItemRedstoneEngineRenderer;
 import phoenix.rem.handler.EventHandlerClient;
 import phoenix.rem.init.BlockRegist;
 
@@ -23,7 +23,7 @@ public class ClientProxy extends CommonProxy {
         MinecraftForge.EVENT_BUS.register(new EventHandlerClient());
     }
     public void registerRenderer(){
-        ClientRegistry.bindTileEntitySpecialRenderer(TEDCEngine.class, new TileDCEngineRenderer());
-        MinecraftForgeClient.registerItemRenderer(ItemBlock.getItemFromBlock(BlockRegist.DCEngine), new ItemDCEngineRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TEDCEngine.class, new TileRedstoneEngineRenderer());
+        MinecraftForgeClient.registerItemRenderer(ItemBlock.getItemFromBlock(BlockRegist.DCEngine), new ItemRedstoneEngineRenderer());
     }
 }

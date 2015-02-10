@@ -7,18 +7,18 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import phoenix.rem.blocks.tile.TEDCEngine;
-import phoenix.rem.client.renderers.model.ModelDCEngine;
+import phoenix.rem.client.renderers.model.ModelRedstoneEngine;
 
 /**
  * Created by Elec332 on 8-2-2015.
  */
 @SideOnly(Side.CLIENT)
-public class TileDCEngineRenderer extends TileEntitySpecialRenderer{
+public class TileRedstoneEngineRenderer extends TileEntitySpecialRenderer{
 
-    private ModelDCEngine modelDCEngine = new ModelDCEngine();
+    private ModelRedstoneEngine modelRedstoneEngine = new ModelRedstoneEngine();
     private RenderItem renderItem;
 
-    public TileDCEngineRenderer(){
+    public TileRedstoneEngineRenderer(){
         renderItem = new RenderItem()
         {
             @Override
@@ -32,6 +32,6 @@ public class TileDCEngineRenderer extends TileEntitySpecialRenderer{
 
     @Override
     public void renderTileEntityAt(TileEntity par1TileEntity, double par2, double par3, double par4, float par5) {
-        modelDCEngine.renderEngine((TEDCEngine) par1TileEntity, par2, par3, par4);
+        modelRedstoneEngine.renderEngine((TEDCEngine) par1TileEntity, par2, par3, par4);
     }
 }

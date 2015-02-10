@@ -1,23 +1,21 @@
 package phoenix.rem.client.renderers.model;
 
+import cpw.mods.fml.client.FMLClientHandler;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.AdvancedModelLoader;
 import net.minecraftforge.client.model.IModelCustom;
-
 import org.lwjgl.opengl.GL11;
-
 import phoenix.rem.blocks.tile.TEDCEngine;
 import phoenix.rem.data.ModInfo;
-import cpw.mods.fml.client.FMLClientHandler;
 
 /**
  * Created by Elec332 on 8-2-2015.
  */
-public class ModelDCEngine extends ModelBase{
+public class ModelRedstoneEngine extends ModelBase{
 
 	private IModelCustom EngineModelDC;
 
-	public ModelDCEngine() {
+	public ModelRedstoneEngine() {
 		this.EngineModelDC = AdvancedModelLoader.loadModel(new ResourceLocation(ModInfo.MODID + ":models/DCMotor.obj"));
 	}
 

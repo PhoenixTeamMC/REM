@@ -1,7 +1,8 @@
 package phoenix.rem.helper;
 
-import static phoenix.rem.REMMod.config;
 import phoenix.rem.data.WorldGenInfo;
+
+import static phoenix.rem.REMMod.config;
 
 /**
  * Created by Elec332 on 8-2-2015.

@@ -1,5 +1,6 @@
 package phoenix.rem.items.test;
 
+import elec332.repack.core.helper.RegisterHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -9,7 +10,6 @@ import net.minecraft.world.World;
 import phoenix.rem.api.power.BaseTileReceiver;
 import phoenix.rem.data.ModInfo;
 import phoenix.rem.main.CTabs;
-import elec332.repack.core.helper.RegisterHelper;
 
 /**
  * Created by Elec332 on 9-2-2015.

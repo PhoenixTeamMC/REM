@@ -57,6 +57,6 @@ public class Engine extends BlockBase implements ITileEntityProvider, IWrenchabl
 
     @Override
     public void onWrenched(World world, int x, int y, int z, ForgeDirection direction) {
-
+        rotateBlock(world, x, y, z, direction);
     }
 }

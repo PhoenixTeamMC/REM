@@ -1,19 +1,22 @@
 package phoenix.rem.blocks;
 
-import java.util.Random;
-
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import elec332.repack.core.helper.RegisterHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
+import phoenix.rem.api.wrench.IRotatable;
 import phoenix.rem.data.ModInfo;
 import phoenix.rem.main.CTabs;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import elec332.repack.core.helper.RegisterHelper;
+
+import java.util.Random;
 
 /**
  * Created by Elec332 on 8-2-2015.
@@ -109,5 +112,11 @@ public class BlockBase extends Block {
     @Override
     public Item getItemDropped(int par1, Random rand, int par2){
         return dropped != null ? dropped : super.getItemDropped(par1, rand, par2);
+    }
+
+    @Override
+    public boolean rotateBlock(World world, int x, int y, int z, ForgeDirection direction) {
+        TileEntity tile = world.getTileEntity(x, y, z);
+        return tile instanceof IRotatable ?((IRotatable)tile).rotateBlock(world, x, y, z):false;
     }
 }

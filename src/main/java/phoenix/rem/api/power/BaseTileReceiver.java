@@ -1,7 +1,6 @@
 package phoenix.rem.api.power;
 
 import net.minecraft.entity.item.EntityTNTPrimed;
-import net.minecraft.util.IIcon;
 import phoenix.rem.api.wrench.BaseTileRotatable;
 
 /**
@@ -35,10 +34,5 @@ public abstract class BaseTileReceiver extends BaseTileRotatable implements IPow
 
     public void setTorque(int i){
         this.torque = i;
-    }
-
-    @Override
-    public IIcon getTexture(int Side) {
-        return null;
     }
 }

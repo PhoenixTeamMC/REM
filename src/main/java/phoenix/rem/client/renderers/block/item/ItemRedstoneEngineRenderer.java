@@ -6,16 +6,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
 import org.lwjgl.opengl.GL11;
-import phoenix.rem.client.renderers.model.ModelDCEngine;
+import phoenix.rem.client.renderers.model.ModelRedstoneEngine;
 
 /**
  * Created by Elec332 on 8-2-2015.
  */
-public class ItemDCEngineRenderer implements IItemRenderer {
-    private ModelDCEngine modelDCEngine;
+public class ItemRedstoneEngineRenderer implements IItemRenderer {
+    private ModelRedstoneEngine modelRedstoneEngine;
 
-    public ItemDCEngineRenderer() {
-        modelDCEngine = new ModelDCEngine();
+    public ItemRedstoneEngineRenderer() {
+        modelRedstoneEngine = new ModelRedstoneEngine();
     }
 
     @Override
@@ -56,7 +56,7 @@ public class ItemDCEngineRenderer implements IItemRenderer {
         GL11.glRotatef(180f, 0f, 1f, 0f);
         ResourceLocation test = new ResourceLocation("models/textures/test_0.png");
         FMLClientHandler.instance().getClient().renderEngine.bindTexture(test);
-        modelDCEngine.renderEngine();
+        modelRedstoneEngine.renderEngine();
         GL11.glPopMatrix();
     }
 }
