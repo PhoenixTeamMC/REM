@@ -24,6 +24,6 @@ public class ClientProxy extends CommonProxy {
     }
     public void registerRenderer(){
         ClientRegistry.bindTileEntitySpecialRenderer(TEDCEngine.class, new TileRedstoneEngineRenderer());
-        MinecraftForgeClient.registerItemRenderer(ItemBlock.getItemFromBlock(BlockRegist.DCEngine), new ItemRedstoneEngineRenderer());
+        MinecraftForgeClient.registerItemRenderer(ItemBlock.getItemFromBlock(BlockRegist.RedstoneEngine), new ItemRedstoneEngineRenderer());
     }
 }

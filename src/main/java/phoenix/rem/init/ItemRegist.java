@@ -16,6 +16,7 @@ public class ItemRegist {
         if (REMMod.developmentEnvironment) {
             new MultiMeter("multimeter").setCreativeTab(CTabs.TabMain);
         }
+
         new Wrench("wrench");
     }
 }

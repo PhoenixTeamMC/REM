@@ -16,13 +16,13 @@ public class BlockRegist {
 
     public static final BlockRegist instance = new BlockRegist();
 
-    public static Block TestOre, DCEngine;
+    public static Block TestOre, RedstoneEngine;
 
     public void init(){
         if (REMMod.developmentEnvironment) {
             new TestBlock("test").setCreativeTab(CTabs.TabMain);
             TestOre = new BlockBase(Material.rock, "TestOre").setCreativeTab(CTabs.TabMain);
         }
-        DCEngine = new Engine(EngineType.REDSTONE);
+        RedstoneEngine = new Engine(EngineType.REDSTONE);
     }
 }
