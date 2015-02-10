@@ -11,6 +11,7 @@ public class ModInfoHelper {
         return event.getModMetadata().modId;
     }
 
+    @Deprecated
     public static String getModName(FMLPreInitializationEvent event){
         return event.getModMetadata().name;
     }
