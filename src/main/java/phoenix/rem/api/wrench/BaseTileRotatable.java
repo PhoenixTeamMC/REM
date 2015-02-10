@@ -27,7 +27,7 @@ public abstract class BaseTileRotatable extends TileEntity implements IRotatable
                 this.output = ForgeDirection.SOUTH;
                 break;
         }
-        world.markBlockForUpdate(x, y, z);
+        //world.markBlockForUpdate(x, y, z);
         return true;
     }
 

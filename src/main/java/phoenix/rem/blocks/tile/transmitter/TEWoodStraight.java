@@ -3,6 +3,7 @@ package phoenix.rem.blocks.tile.transmitter;
 import net.minecraft.entity.item.EntityTNTPrimed;
 import phoenix.rem.api.power.BaseTileTransmitter;
 import phoenix.rem.api.power.IPowerReceiver;
+import phoenix.rem.helper.DirectionHelper;
 
 /**
  * Created by Elec332 on 10-2-2015.
@@ -29,7 +30,7 @@ public class TEWoodStraight extends BaseTileTransmitter {
     }
 
     public void tryToEmitPower(IPowerReceiver powerReceiver){
-        if (powerReceiver.canReceivePowerFromSide(output)) {
+        if (powerReceiver.canReceivePowerFromSide(DirectionHelper.getOppositeSide(output))) {
             powerReceiver.setSpeed(speed);
             powerReceiver.setTorque(torque);
         }

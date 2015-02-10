@@ -46,13 +46,13 @@ public abstract class BaseTileTransmitter extends BaseTileRotatable implements I
     }
 
     public Boolean canReceivePowerFromSide(ForgeDirection direction) {
-        /*if (direction == DirectionHelper.getOppositeSide(output))
+        if (direction == DirectionHelper.getOppositeSide(output))
             return true;
         if (direction == output) {
             setRotation(DirectionHelper.getOppositeSide(output));
             return true;
         }
-        return false;*/
-        return direction == DirectionHelper.getOppositeSide(output);
+        return false;
+        //return direction == DirectionHelper.getOppositeSide(output);
     }
 }
