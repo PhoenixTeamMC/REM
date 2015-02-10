@@ -1,17 +1,5 @@
 package phoenix.rem;
 
-import java.io.File;
-
-import net.minecraftforge.common.config.Configuration;
-
-import org.apache.logging.log4j.Logger;
-
-import phoenix.rem.data.ModInfo;
-import phoenix.rem.init.BlockRegist;
-import phoenix.rem.init.ItemRegist;
-import phoenix.rem.proxies.CommonProxy;
-import phoenix.rem.util.ConfigHandler;
-import phoenix.rem.world.Ores;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -23,11 +11,21 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import elec332.repack.core.helper.MCModInfo;
 import elec332.repack.core.helper.ModInfoHelper;
 import elec332.repack.core.modBaseUtils.ModBase;
+import net.minecraftforge.common.config.Configuration;
+import org.apache.logging.log4j.Logger;
+import phoenix.rem.data.ModInfo;
+import phoenix.rem.init.BlockRegist;
+import phoenix.rem.init.ItemRegist;
+import phoenix.rem.proxies.CommonProxy;
+import phoenix.rem.util.ConfigHandler;
+import phoenix.rem.world.Ores;
+
+import java.io.File;
 
 /**
  * Created by Elec332 on 5-2-2015.
  */
-@Mod(modid = "REM", name = "REM", dependencies = ModInfo.DEPENDENCIES, acceptedMinecraftVersions = ModInfo.ACCEPTEDMCVERSIONS, useMetadata = true, canBeDeactivated = true, guiFactory = "phoenix.rem.GUIFactory")
+@Mod(modid = "REM", name = "REM", dependencies = ModInfo.DEPENDENCIES, acceptedMinecraftVersions = ModInfo.ACCEPTEDMCVERSIONS, useMetadata = true, canBeDeactivated = true, guiFactory = "phoenix.rem.client.gui.GUIFactory")
 public class REMMod extends ModBase{
 
 	@SidedProxy(clientSide = ModInfo.CLIENTPROXY, serverSide = ModInfo.COMMONPROXY)

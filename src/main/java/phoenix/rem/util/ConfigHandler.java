@@ -1,10 +1,10 @@
 package phoenix.rem.util;
 
-import java.util.Set;
-
 import net.minecraftforge.common.config.ConfigCategory;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
+
+import java.util.Set;
 
 /**
  * This is effectively a wrapper for Forge Configurations. It allows for easier manipulation of Config files.

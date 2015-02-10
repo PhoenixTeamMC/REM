@@ -1,4 +1,4 @@
-package phoenix.rem;
+package phoenix.rem.client.gui;
 
 import cpw.mods.fml.client.IModGuiFactory;
 import net.minecraft.client.Minecraft;

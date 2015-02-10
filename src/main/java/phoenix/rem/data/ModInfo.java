@@ -8,5 +8,5 @@ public class ModInfo {
     public static final String ACCEPTEDMCVERSIONS = "[1.7.10]";
     public static final String CLIENTPROXY = "phoenix.rem.proxies.ClientProxy";
     public static final String COMMONPROXY = "phoenix.rem.proxies.CommonProxy";
-    public static final String MODID = "REI";
+    public static final String MODID = "REM";
 }
