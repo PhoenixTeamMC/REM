@@ -30,7 +30,7 @@ public abstract class ModBase{
             BufferedReader reader = new BufferedReader(new InputStreamReader(new URL(versionURL).openStream()));
                 this.onlineVer = reader.readLine().replace("mod_version=", "");
             reader.close();
-            this.onlineVer ="1.3.0";
+            //this.onlineVer ="1.3.0";
 
         String[] unparsed= onlineVer.replace(".", " ").split(" ");
         String qr[] = versionInternal.replace(".", " ").split(" ");
