@@ -18,7 +18,8 @@ public abstract class BaseTileEngine extends BaseTileRotatable{
                 return worldObj.getTileEntity(xCoord, yCoord, zCoord - 1);
             case EAST:
                 return worldObj.getTileEntity(xCoord + 1, yCoord, zCoord);
+            default:
+                return null;
         }
-        return null;
     }
 }

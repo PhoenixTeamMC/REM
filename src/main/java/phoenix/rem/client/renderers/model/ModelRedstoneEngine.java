@@ -5,7 +5,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.AdvancedModelLoader;
 import net.minecraftforge.client.model.IModelCustom;
 import org.lwjgl.opengl.GL11;
-import phoenix.rem.blocks.tile.TEDCEngine;
+import phoenix.rem.blocks.tile.engine.TERedstoneEngine;
 import phoenix.rem.data.ModInfo;
 
 /**
@@ -23,7 +23,7 @@ public class ModelRedstoneEngine extends ModelBase{
 		EngineModelDC.renderAll();
 	}
 
-	public void renderEngine(TEDCEngine engine, double x, double y, double z){
+	public void renderEngine(TERedstoneEngine engine, double x, double y, double z){
 		float scale = 0.1f;
 		Float rotation = getRotation(engine);
 		GL11.glPushMatrix();

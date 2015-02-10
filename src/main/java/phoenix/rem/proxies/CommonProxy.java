@@ -4,7 +4,8 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraftforge.common.MinecraftForge;
 import phoenix.rem.blocks.test.TestBlockTE;
-import phoenix.rem.blocks.tile.TEDCEngine;
+import phoenix.rem.blocks.tile.engine.TERedstoneEngine;
+import phoenix.rem.blocks.tile.transmitter.TEWoodStraight;
 import phoenix.rem.handler.EventHandlerCommon;
 
 /**
@@ -18,7 +19,8 @@ public class CommonProxy {
 
     public void registerTileEntities(){
         GameRegistry.registerTileEntity(TestBlockTE.class, "Test");
-        GameRegistry.registerTileEntity(TEDCEngine.class, "Engine");
+        GameRegistry.registerTileEntity(TERedstoneEngine.class, "EngineRedstone");
+        GameRegistry.registerTileEntity(TEWoodStraight.class, "WoodSTransmitter");
     }
     public void registerRenderer(){}
 }

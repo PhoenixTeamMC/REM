@@ -13,11 +13,11 @@ public class ModelBase extends net.minecraft.client.model.ModelBase {
             ForgeDirection pointing = ((BaseTileRotatable) entity).output;
             switch (pointing){
                 case SOUTH:
-                    return 0.0F;
+                    return 180.0F;
                 case WEST:
                     return 90.0F;
                 case NORTH:
-                    return 180.0F;
+                    return 0.0F;
                 case EAST:
                     return 270.0F;
                 default:

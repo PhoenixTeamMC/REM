@@ -11,7 +11,6 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import elec332.repack.core.helper.MCModInfo;
 import elec332.repack.core.helper.ModInfoHelper;
 import elec332.repack.core.modBaseUtils.ModBase;
-import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.Logger;
 import phoenix.rem.data.ModInfo;
 import phoenix.rem.helper.ConfigHelper;

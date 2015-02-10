@@ -30,4 +30,8 @@ public abstract class BaseTileRotatable extends TileEntity implements IRotatable
         world.markBlockForUpdate(x, y, z);
         return true;
     }
+
+    public void setRotation(ForgeDirection direction){
+        this.output = direction;
+    }
 }
