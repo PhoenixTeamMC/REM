@@ -4,12 +4,16 @@ package phoenix.rem.data;
  * Created by Elec332 on 8-2-2015.
  */
 public class WorldGenInfo {
-    public WorldGenInfo(){
+    public WorldGenInfo(int yLevelMax, int timesPerChunk){
+        this.yLevelMax = yLevelMax;
+        this.timesPerChunk = timesPerChunk;
     }
 
     int multiplier = 1;
     boolean shouldGen = true;
     int clusterSize = 0;
+    public Integer yLevelMax;
+    public Integer timesPerChunk;
 
 
     //Sets worldGen info

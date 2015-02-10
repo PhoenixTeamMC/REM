@@ -17,7 +17,7 @@ import java.util.Random;
  */
 public class Ores implements IWorldGenerator {
 
-    static WorldGenInfo TestInfo = ConfigHelper.configurableWorldGen("TestOre", 6);
+    static WorldGenInfo TestInfo = ConfigHelper.configurableWorldGen("TestOre", 6, 60, 10);
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
@@ -34,11 +34,33 @@ public class Ores implements IWorldGenerator {
 
     private void generateOverworld(World world, Random random, int chunkX, int chunkZ, WorldGenInfo info, Block block) {
         if (info.getShouldGen()){
-            for (int i = 0; i < 10 * info.getGenerationMultiplier(); i++) {
+            for (int i = 0; i < info.timesPerChunk * info.getGenerationMultiplier(); i++) {
                 int xCoord = chunkX + random.nextInt(16);
-                int yCoord = random.nextInt(60); //Max Y value, should we make this configurable aswell?
+                int yCoord = random.nextInt(info.yLevelMax); //Max Y value, should we make this configurable aswell?
                 int zCoord = chunkZ + random.nextInt(16);
                 (new WorldGenMinable(block, 0, info.getClusterSize(), Blocks.stone)).generate(world, random, xCoord, yCoord, zCoord);
+            }
+        }
+    }
+
+    private void generateEnd(World world, Random random, int chunkX, int chunkZ, WorldGenInfo info, Block block) {
+        if (info.getShouldGen()){
+            for (int i = 0; i < info.timesPerChunk * info.getGenerationMultiplier(); i++) {
+                int xCoord = chunkX + random.nextInt(16);
+                int yCoord = random.nextInt(info.yLevelMax); //Max Y value, should we make this configurable aswell?
+                int zCoord = chunkZ + random.nextInt(16);
+                (new WorldGenMinable(block, 0, info.getClusterSize(), Blocks.end_stone)).generate(world, random, xCoord, yCoord, zCoord);
+            }
+        }
+    }
+
+    private void generateNether(World world, Random random, int chunkX, int chunkZ, WorldGenInfo info, Block block) {
+        if (info.getShouldGen()){
+            for (int i = 0; i < info.timesPerChunk * info.getGenerationMultiplier(); i++) {
+                int xCoord = chunkX + random.nextInt(16);
+                int yCoord = random.nextInt(info.yLevelMax); //Max Y value, should we make this configurable aswell?
+                int zCoord = chunkZ + random.nextInt(16);
+                (new WorldGenMinable(block, 0, info.getClusterSize(), Blocks.netherrack)).generate(world, random, xCoord, yCoord, zCoord);
             }
         }
     }

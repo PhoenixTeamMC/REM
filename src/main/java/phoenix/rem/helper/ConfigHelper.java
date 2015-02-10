@@ -9,11 +9,11 @@ import static phoenix.rem.REMMod.config;
  */
 public class ConfigHelper {
 
-    public static WorldGenInfo configurableWorldGen(String oreName, int i){
+    public static WorldGenInfo configurableWorldGen(String oreName, int clusterSize, int maxY, int timesPerChunk){
         boolean s = config.get("Should_gen", oreName, true, "Sets if the ore should generate in the world or not");
         int m = config.modConfiguration.getInt("Generation_multiplier", oreName, 100, 0, 1000, "Sets how many times REM will attempt to generate ores per chunk (In % from the default value)");
-        int c = config.modConfiguration.getInt("ClusterSize", oreName, i, 0, 30, "Sets the max cluster size for this ore");
+        int c = config.modConfiguration.getInt("ClusterSize", oreName, clusterSize, 0, 30, "Sets the max cluster size for this ore");
         
-        return new WorldGenInfo().setGenerationMultiplier((m/100)).setShouldGen(s).setClusterSize(c);
+        return new WorldGenInfo(maxY, timesPerChunk).setGenerationMultiplier((m/100)).setShouldGen(s).setClusterSize(c);
     }
 }
