@@ -18,7 +18,8 @@ public class BlockRegist {
 
     public static final BlockRegist instance = new BlockRegist();
 
-    public static Block TestOre, RedstoneEngine, WoodenTransmitter;
+    public static Block TestOre, RedstoneEngine;
+    public static Block WoodenTransmitter, IronTransmitter;
 
     public void init(){
         if (REMMod.developmentEnvironment) {
@@ -27,5 +28,6 @@ public class BlockRegist {
         }
         RedstoneEngine = new Engine(EngineType.REDSTONE);
         WoodenTransmitter = new TransmitterStraight(TransmitterType.WOOD).setCreativeTab(CTabs.TabMain);
+        IronTransmitter = new TransmitterStraight(TransmitterType.IRON).setCreativeTab(CTabs.TabMain);
     }
 }

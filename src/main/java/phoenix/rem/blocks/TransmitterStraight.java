@@ -4,6 +4,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import phoenix.rem.api.types.TransmitterType;
+import phoenix.rem.blocks.tile.transmitter.TEIronStraight;
 import phoenix.rem.blocks.tile.transmitter.TEWoodStraight;
 
 /**
@@ -23,6 +24,8 @@ public class TransmitterStraight extends BlockMachineBase {
         switch (type){
             case WOOD:
                 return new TEWoodStraight();
+            case IRON:
+                return new TEIronStraight();
             default:
                 return null;
         }

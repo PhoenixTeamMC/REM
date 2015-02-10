@@ -1,4 +1,2 @@
-*.mtl binary
 *.obj binary
-*.mtl diff=binary
-*.obj diff=binary
+*.mtl binary
