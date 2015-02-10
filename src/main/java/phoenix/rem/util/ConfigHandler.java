@@ -51,12 +51,17 @@ public class ConfigHandler {
 	}
 
 	public void load(){
-		
+		modConfiguration.load();
 	}
 	
 	public void save() {
 
 		modConfiguration.save();
+	}
+
+	public void sync(){
+		load();
+		save();
 	}
 
 	/* Shortcuts */
