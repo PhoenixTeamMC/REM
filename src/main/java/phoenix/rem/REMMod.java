@@ -14,6 +14,7 @@ import elec332.repack.core.modBaseUtils.ModBase;
 import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.Logger;
 import phoenix.rem.data.ModInfo;
+import phoenix.rem.helper.ConfigHelper;
 import phoenix.rem.init.BlockRegist;
 import phoenix.rem.init.ItemRegist;
 import phoenix.rem.proxies.CommonProxy;
@@ -34,14 +35,16 @@ public class REMMod extends ModBase{
 	@Instance("REM")
 	public static REMMod instance;
 	public static File baseFolder;
+	public static String version;
 	public static ConfigHandler config;
 	public static Logger log;
 	
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event){
+		version = ModInfoHelper.getModVersion(event);
 		baseFolder = new File(event.getModConfigurationDirectory(), "REM");
-		config = new ConfigHandler(ModInfoHelper.getModVersion(event)).setConfiguration(new Configuration(new File(baseFolder, "REM.cfg")));
+		config = ConfigHelper.getConfig("REM");
 		log = event.getModLog();
 		
 		if (developmentEnvironment){
@@ -51,7 +54,7 @@ public class REMMod extends ModBase{
 		}
 		
 		proxy.registerHandlers();
-
+		config.sync();
 		MCModInfo.CreateMCModInfo(event, "Created by Elec332 & chbachman", "Description", "Loading URL...", "assets/rem/logo.png", new String[] { "Elec332", "chbachman" });
 	}
 
@@ -68,11 +71,12 @@ public class REMMod extends ModBase{
 		ItemRegist.instance.init();
 		BlockRegist.instance.init();
 		GameRegistry.registerWorldGenerator(new Ores(), 1000);
+		config.sync();
 	}
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event){
-		
-	}
 
+		config.sync();
+	}
 }
