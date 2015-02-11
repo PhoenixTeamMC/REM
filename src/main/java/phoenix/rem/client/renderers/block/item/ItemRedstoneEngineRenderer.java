@@ -2,6 +2,7 @@ package phoenix.rem.client.renderers.block.item;
 
 import cpw.mods.fml.client.FMLClientHandler;
 import net.minecraft.client.renderer.RenderBlocks;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
@@ -18,14 +19,32 @@ public class ItemRedstoneEngineRenderer implements IItemRenderer {
         modelRedstoneEngine = new ModelRedstoneEngine();
     }
 
-    @Override
-    public boolean handleRenderType(ItemStack item, ItemRenderType type) {
-        return true;
-    }
+    //@Override
+    //public boolean handleRenderType(ItemStack item, ItemRenderType type) {
+        //return true;
+    //}
 
     @Override
     public boolean shouldUseRenderHelper(IItemRenderer.ItemRenderType type, ItemStack item, IItemRenderer.ItemRendererHelper helper) {
 		return true;
+	}
+
+	@Override
+	public boolean handleRenderType(ItemStack item, ItemRenderType type)
+	{
+		switch (type)
+		{
+			case ENTITY:
+				return true;
+			case EQUIPPED:
+				return true;
+			case EQUIPPED_FIRST_PERSON:
+				return true;
+			case INVENTORY:
+				return true;
+			default:
+				return false;
+		}
 	}
 
 	@Override
@@ -50,13 +69,25 @@ public class ItemRedstoneEngineRenderer implements IItemRenderer {
 	}
 
     private void renderDCEngine(RenderBlocks render, ItemStack item, float x, float y, float z, float scale) {
-        GL11.glPushMatrix();
+        /*GL11.glPushMatrix();
         GL11.glTranslatef(x, y, z);
         GL11.glScalef(scale, scale, scale);
         GL11.glRotatef(180f, 0f, 1f, 0f);
         ResourceLocation test = new ResourceLocation("models/textures/test_0.png");
         FMLClientHandler.instance().getClient().renderEngine.bindTexture(test);
-        modelRedstoneEngine.renderEngine();
+		GL11.glPushMatrix();
+        //modelRedstoneEngine.renderEngine();
+		modelRedstoneEngine.render(null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
         GL11.glPopMatrix();
+		GL11.glPopMatrix();*/
+		GL11.glPushMatrix();
+		GL11.glTranslatef((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
+		ResourceLocation test = new ResourceLocation("models/textures/test_0.png");
+		FMLClientHandler.instance().getClient().renderEngine.bindTexture(test);
+		GL11.glPushMatrix();
+		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+		this.modelRedstoneEngine.render(null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
+		GL11.glPopMatrix();
+		GL11.glPopMatrix();
     }
 }

@@ -7,7 +7,7 @@ import phoenix.rem.api.wrench.BaseTileRotatable;
 /**
  * Created by Elec332 on 9-2-2015.
  */
-public class ModelBase extends net.minecraft.client.model.ModelBase {
+class ModelBase extends net.minecraft.client.model.ModelBase {
     public Float getRotation(TileEntity entity){
         if (entity instanceof BaseTileRotatable){
             ForgeDirection pointing = ((BaseTileRotatable) entity).output;
