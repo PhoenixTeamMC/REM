@@ -6,6 +6,7 @@ import net.minecraftforge.common.MinecraftForge;
 import phoenix.rem.blocks.test.TestBlockTE;
 import phoenix.rem.blocks.tile.engine.TERedstoneEngine;
 import phoenix.rem.blocks.tile.transmitter.TEIronStraight;
+import phoenix.rem.blocks.tile.transmitter.TEWoodCorner;
 import phoenix.rem.blocks.tile.transmitter.TEWoodStraight;
 import phoenix.rem.handler.EventHandlerCommon;
 
@@ -23,6 +24,8 @@ public class CommonProxy {
         GameRegistry.registerTileEntity(TERedstoneEngine.class, "EngineRedstone");
         GameRegistry.registerTileEntity(TEWoodStraight.class, "WoodSTransmitter");
         GameRegistry.registerTileEntity(TEIronStraight.class, "IronSTransmitter");
+        GameRegistry.registerTileEntity(TEWoodCorner.class, "WoodCTransmitter");
     }
+
     public void registerRenderer(){}
 }

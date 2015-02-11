@@ -60,15 +60,15 @@ public class REMMod extends ModBase{
 	@EventHandler
 	public void init(FMLInitializationEvent event){
 		proxy.registerTileEntities();
-		
+		ItemRegist.instance.init();
+		BlockRegist.instance.init();
 		if (config.get("I_wanna_crash_on_startup", "enable", false)){
 			log.info("Attempting to crash your game with broken render stuff...");
 			proxy.registerRenderer();
 			log.info("Seems like the rendering works, please proceed loading the game...");
 		}
 		
-		ItemRegist.instance.init();
-		BlockRegist.instance.init();
+
 		GameRegistry.registerWorldGenerator(new Ores(), 1000);
 		config.sync();
 	}
