@@ -9,29 +9,34 @@ import net.minecraftforge.common.util.ForgeDirection;
  */
 public abstract class BaseTileRotatable extends TileEntity implements IRotatable {
 
-    public ForgeDirection output  = ForgeDirection.SOUTH;
+    ForgeDirection facing = ForgeDirection.SOUTH;
 
     @Override
     public Boolean rotateBlock(World world, int x, int y, int z) {
-        switch (output){
+        switch (facing){
             case SOUTH:
-                this.output = ForgeDirection.WEST;
+                this.facing = ForgeDirection.WEST;
                 break;
             case WEST:
-                this.output = ForgeDirection.NORTH;
+                this.facing = ForgeDirection.NORTH;
                 break;
             case NORTH:
-                this.output = ForgeDirection.EAST;
+                this.facing = ForgeDirection.EAST;
                 break;
             case EAST:
-                this.output = ForgeDirection.SOUTH;
+                this.facing = ForgeDirection.SOUTH;
                 break;
         }
         //world.markBlockForUpdate(x, y, z);
         return true;
     }
 
+    @Override
+    public ForgeDirection getFacing() {
+        return facing;
+    }
+
     public void setRotation(ForgeDirection direction){
-        this.output = direction;
+        this.facing = direction;
     }
 }

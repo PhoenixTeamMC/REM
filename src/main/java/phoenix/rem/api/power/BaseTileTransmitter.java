@@ -31,7 +31,7 @@ public abstract class BaseTileTransmitter extends BaseTileRotatable implements I
     }
 
     public void tryToEmitPower(IPowerReceiver powerReceiver){
-        if (powerReceiver.canReceivePowerFromSide(DirectionHelper.getOppositeSide(output))) {
+        if (powerReceiver.canReceivePowerFromSide(output)){ //DirectionHelper.getOppositeSide(output))) {
             powerReceiver.setSpeed(speed); //*((100-frictionWhenOiled(oiled))/100));
             powerReceiver.setTorque(torque); //*((100-frictionWhenOiled(oiled))/100));
         }
@@ -52,6 +52,7 @@ public abstract class BaseTileTransmitter extends BaseTileRotatable implements I
         }
     }
 
+    public ForgeDirection output; // = getFacing();
     public Boolean isBroken = false;
     public Integer speed = 0;
     public Integer torque = 0;
@@ -78,10 +79,11 @@ public abstract class BaseTileTransmitter extends BaseTileRotatable implements I
     }
 
     public Boolean canReceivePowerFromSide(ForgeDirection direction) {
-        if (direction == DirectionHelper.getOppositeSide(output))
+        if (direction == DirectionHelper.getOppositeSide(getFacing())) {
+            this.output = getFacing();
             return true;
-        if (direction == output) {
-            setRotation(DirectionHelper.getOppositeSide(output));
+        } else if (direction == getFacing()) {
+            this.output = DirectionHelper.getOppositeSide(getFacing());
             return true;
         }
         return false;

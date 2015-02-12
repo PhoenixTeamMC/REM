@@ -11,14 +11,24 @@ public class TEWoodCorner extends BaseTileTransmitter{
     @Override
     public Boolean canReceivePowerFromSide(ForgeDirection direction) {
         switch (direction){
-            case WEST:
-                return (output == ForgeDirection.SOUTH || output == ForgeDirection.NORTH);
-            case NORTH:
-                return (output == ForgeDirection.WEST || output == ForgeDirection.EAST);
+            /*case NORTH:
+                return getFacing() == ForgeDirection.NORTH || getFacing() == ForgeDirection.WEST;*/
             case EAST:
-                return (output == ForgeDirection.NORTH || output == ForgeDirection.SOUTH);
+                if (getFacing() == ForgeDirection.EAST)
+                    this.output = ForgeDirection.NORTH.getOpposite();
+                if (getFacing() == ForgeDirection.SOUTH)
+                    this.output = ForgeDirection.EAST.getOpposite();
             case SOUTH:
-                return (output == ForgeDirection.EAST || output == ForgeDirection.WEST);
+                if (getFacing() == ForgeDirection.SOUTH) {
+                    this.output = ForgeDirection.WEST.getOpposite();
+                    return true;
+                }
+                if (getFacing() == ForgeDirection.EAST) {
+                    this.output = ForgeDirection.EAST.getOpposite();
+                    return true;
+                }
+            //case WEST:
+                //return getFacing() == ForgeDirection.WEST || getFacing() == ForgeDirection.SOUTH;
             default:
                 return false;
         }

@@ -50,6 +50,6 @@ public abstract class BaseTileReceiver extends BaseTileRotatable implements IPow
 
     @Override
     public Boolean canReceivePowerFromSide(ForgeDirection direction) {
-        return DirectionHelper.getOppositeSide(output) == direction;
+        return DirectionHelper.getOppositeSide(getFacing()) == direction;
     }
 }

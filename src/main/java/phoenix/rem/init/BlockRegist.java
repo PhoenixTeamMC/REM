@@ -10,6 +10,7 @@ import phoenix.rem.blocks.BlockBase;
 import phoenix.rem.blocks.Engine;
 import phoenix.rem.blocks.TransmitterCorner;
 import phoenix.rem.blocks.TransmitterStraight;
+import phoenix.rem.blocks.test.DirectionBlock;
 import phoenix.rem.blocks.test.TestBlock;
 import phoenix.rem.main.CTabs;
 
@@ -27,8 +28,9 @@ public class BlockRegist {
 
     public void init(){
         if (REMMod.developmentEnvironment) {
-            new TestBlock("test").setCreativeTab(CTabs.TabMain);
-            TestOre = new BlockBase(Material.rock, "TestOre").setCreativeTab(CTabs.TabMain);
+            new TestBlock("test").setCreativeTab(tab);
+            TestOre = new BlockBase(Material.rock, "TestOre").setCreativeTab(tab);
+            new DirectionBlock().setCreativeTab(tab);
         }
         RedstoneEngine = new Engine(EngineType.REDSTONE);
         WoodenTransmitter = new TransmitterStraight(TransmitterType.WOOD).setCreativeTab(tab);

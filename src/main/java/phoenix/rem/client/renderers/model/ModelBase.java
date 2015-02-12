@@ -10,7 +10,7 @@ import phoenix.rem.api.wrench.BaseTileRotatable;
 class ModelBase extends net.minecraft.client.model.ModelBase {
     public Float getRotation(TileEntity entity){
         if (entity instanceof BaseTileRotatable){
-            ForgeDirection pointing = ((BaseTileRotatable) entity).output;
+            ForgeDirection pointing = ((BaseTileRotatable) entity).getFacing();
             switch (pointing){
                 case SOUTH:
                     return 180.0F;

@@ -26,14 +26,14 @@ public abstract class BaseTileEngine extends BaseTileRotatable{
     protected abstract Integer torque();
 
     public void tryToEmitPower(IPowerReceiver powerReceiver){
-        if (powerReceiver.canReceivePowerFromSide(DirectionHelper.getOppositeSide(output))) {
+        if (powerReceiver.canReceivePowerFromSide(DirectionHelper.getOppositeSide(getFacing()))) {
             powerReceiver.setSpeed(speed());
             powerReceiver.setTorque(torque());
         }
     }
 
     public TileEntity getPowerReceiver(){
-        switch (output){
+        switch (getFacing()){
             case SOUTH:
                 return worldObj.getTileEntity(xCoord, yCoord, zCoord + 1);
             case WEST:
