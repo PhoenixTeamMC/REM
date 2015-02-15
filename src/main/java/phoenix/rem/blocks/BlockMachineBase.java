@@ -7,6 +7,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import phoenix.rem.api.types.EngineType;
@@ -21,7 +22,7 @@ import java.util.Random;
  */
 public abstract class BlockMachineBase extends BlockBase implements ITileEntityProvider, IWrenchable {
 
-    public BlockMachineBase(Material mat, String name){
+    public BlockMachineBase(Material mat, String name) {
         super(mat, name);
         setNoOpaqueCube();
     }
@@ -29,7 +30,7 @@ public abstract class BlockMachineBase extends BlockBase implements ITileEntityP
     EngineType type;
 
     @Override
-    public int quantityDropped(Random random){
+    public int quantityDropped(Random random) {
         return 0;
     }
 
@@ -37,30 +38,27 @@ public abstract class BlockMachineBase extends BlockBase implements ITileEntityP
     public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entityLivingBase, ItemStack itemStack) {
         TileEntity tileEntity = world.getTileEntity(x, y, z);
         if (tileEntity instanceof BaseTileRotatable) {
-            ((BaseTileRotatable) tileEntity).setRotation(DirectionHelper.getFacingOnPlacement(entityLivingBase.rotationYaw));
+            ((BaseTileRotatable) tileEntity).setRotation(DirectionHelper.getFacingOnPlacement(entityLivingBase));
         }
     }
 
     @Override
-    public Item getItemDropped(int par1, Random rand, int par2){
+    public Item getItemDropped(int par1, Random rand, int par2) {
         return null;
     }
 
     @Override
-    public boolean renderAsNormalBlock()
-    {
+    public boolean renderAsNormalBlock() {
         return false;
     }
 
     @Override
-    public int getRenderType()
-    {
+    public int getRenderType() {
         return -1;
     }
 
     @Override
-    public boolean hasTileEntity()
-    {
+    public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int i) {
         return true;
     }
 

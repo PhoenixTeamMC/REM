@@ -1,5 +1,7 @@
 package phoenix.rem.helper;
 
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.util.MathHelper;
 import net.minecraftforge.common.util.ForgeDirection;
 
 /**
@@ -25,15 +27,19 @@ public class DirectionHelper {
         }
     }
 
-    public static ForgeDirection getFacingOnPlacement(float yaw){
-        if (yaw <= 90.0f)
-            return ForgeDirection.NORTH;
-        if (yaw > 90.0f && yaw <= 180.0f)
-            return ForgeDirection.EAST;
-        if (yaw > 180.0f && yaw <= 270.0f)
-            return ForgeDirection.SOUTH;
-        if (yaw > 270.0f && yaw <= 360f)
-            return ForgeDirection.WEST;
-        return ForgeDirection.UNKNOWN;
+    public static ForgeDirection getFacingOnPlacement(EntityLivingBase entityLivingBase){
+        int i = MathHelper.floor_double((double) (entityLivingBase.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+        switch (i){
+            case 0:
+                return ForgeDirection.NORTH;
+            case 1:
+                return ForgeDirection.EAST;
+            case 2:
+                return ForgeDirection.SOUTH;
+            case 3:
+                return ForgeDirection.WEST;
+            default:
+                return ForgeDirection.UNKNOWN;
+        }
     }
 }
