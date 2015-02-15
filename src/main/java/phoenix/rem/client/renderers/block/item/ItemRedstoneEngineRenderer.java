@@ -2,11 +2,14 @@ package phoenix.rem.client.renderers.block.item;
 
 import cpw.mods.fml.client.FMLClientHandler;
 import net.minecraft.client.renderer.RenderBlocks;
+import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
 import org.lwjgl.opengl.GL11;
+import phoenix.rem.blocks.tile.engine.TERedstoneEngine;
 import phoenix.rem.client.renderers.model.ModelRedstoneEngine;
 
 /**
@@ -14,9 +17,13 @@ import phoenix.rem.client.renderers.model.ModelRedstoneEngine;
  */
 public class ItemRedstoneEngineRenderer implements IItemRenderer {
     private ModelRedstoneEngine modelRedstoneEngine;
+    private TileEntitySpecialRenderer renderer;
+    private TERedstoneEngine dummyTE;
 
-    public ItemRedstoneEngineRenderer() {
+    public ItemRedstoneEngineRenderer(TileEntitySpecialRenderer renderer, TileEntity te) {
         modelRedstoneEngine = new ModelRedstoneEngine();
+        this.renderer = renderer;
+        this.dummyTE = (TERedstoneEngine) te;
     }
 
     //@Override
@@ -69,6 +76,7 @@ public class ItemRedstoneEngineRenderer implements IItemRenderer {
 	}
 
     private void renderDCEngine(RenderBlocks render, ItemStack item, float x, float y, float z, float scale) {
+
         /*GL11.glPushMatrix();
         GL11.glTranslatef(x, y, z);
         GL11.glScalef(scale, scale, scale);
@@ -80,6 +88,8 @@ public class ItemRedstoneEngineRenderer implements IItemRenderer {
 		modelRedstoneEngine.render(null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
         GL11.glPopMatrix();
 		GL11.glPopMatrix();*/
+
+        /*
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
 		ResourceLocation test = new ResourceLocation("models/textures/test_0.png");
@@ -89,5 +99,7 @@ public class ItemRedstoneEngineRenderer implements IItemRenderer {
 		this.modelRedstoneEngine.render(null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 		GL11.glPopMatrix();
 		GL11.glPopMatrix();
+        */
+        this.renderer.renderTileEntityAt(dummyTE, 0.0, 0.0, 0.0, 0.0F);
     }
 }
