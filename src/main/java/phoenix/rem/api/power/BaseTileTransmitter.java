@@ -75,7 +75,7 @@ public abstract class BaseTileTransmitter extends BaseTileRotatable implements I
     }
 
     protected Integer frictionWhenOiled(boolean oiled){
-        return oiled ? 3 : 20;
+        return (oiled ? 3 : 20)*speed/maxSpeed();
     }
 
     public Boolean canReceivePowerFromSide(ForgeDirection direction) {

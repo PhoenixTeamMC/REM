@@ -13,12 +13,12 @@ public class TEDieselEngine extends BaseTileEngine{ //} implements IFluidTank{
     }
 
     @Override
-    protected Integer speed() {
+    protected Integer maxSpeed() {
         return 150;
     }
 
     @Override
-    protected Integer torque() {
+    protected Integer maxTorque() {
         return 200;
     }
 }
