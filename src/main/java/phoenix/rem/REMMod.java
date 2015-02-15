@@ -54,7 +54,7 @@ public class REMMod extends ModBase{
 		
 		proxy.registerHandlers();
 		config.sync();
-		MCModInfo.CreateMCModInfo(event, "Created by Elec332 & chbachman", "Description", "Loading URL...", "assets/rem/logo.png", new String[] { "Elec332", "chbachman" });
+		MCModInfo.CreateMCModInfo(event, "Created by Elec332 & chbachman", "Description", "Loading URL...", "assets/rem/logo.png", new String[] { "Elec332", "chbachman", "InfinityRaider" });
 	}
 
 	@EventHandler
