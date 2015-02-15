@@ -24,7 +24,7 @@ public class ModelRedstoneEngine extends ModelBase{
 	}
 
 	public void renderEngine(TERedstoneEngine engine, double x, double y, double z){
-		float scale = 0.1f;
+		float scale = 0.07f;
 		Float rotation = getRotation(engine);
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) x + 0.5f, (float) y, (float) z + 0.5f);
