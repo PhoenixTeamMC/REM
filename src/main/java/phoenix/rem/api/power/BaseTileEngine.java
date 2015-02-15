@@ -21,38 +21,38 @@ public abstract class BaseTileEngine extends BaseTileRotatable{
 
     protected abstract Boolean isRunning();
 
-    protected abstract Float maxSpeed();
+    protected abstract float maxSpeed();
 
-    protected abstract Float maxTorque();
+    protected abstract float maxTorque();
 
-    protected Float calculateTorque(Float speed) {
+    protected float calculateTorque(float speed) {
         return maxTorque()-(maxTorque()*speed)/maxSpeed();
     }
 
-    protected Float calculateSpeed(Float loadTorque) {
+    protected float calculateSpeed(float loadTorque) {
         return maxSpeed()*(maxTorque()-loadTorque)/maxTorque();
     }
 
-    protected Float powerFromTorque(Float torque) {
+    protected float powerFromTorque(float torque) {
         return torque * calculateSpeed(torque);
     }
 
-    protected Float powerFromSpeed(Float speed) {
+    protected float powerFromSpeed(float speed) {
         return speed * calculateTorque(speed);
     }
 
-    protected Float maxPower() {
-        Float optimalSpeed = speedForMaxPower();
+    protected float maxPower() {
+        float optimalSpeed = speedForMaxPower();
         return optimalSpeed * calculateTorque(optimalSpeed);
     }
 
-    protected Float speedForMaxPower() {
+    protected float speedForMaxPower() {
         return maxSpeed()/2;
     }
 
     public void tryToEmitPower(IPowerReceiver powerReceiver){
         if (powerReceiver.canReceivePowerFromSide(DirectionHelper.getOppositeSide(getFacing()))) {
-            Float loadTorque = powerReceiver.getTorque();
+            float loadTorque = powerReceiver.getTorque();
             powerReceiver.setSpeed(calculateSpeed(loadTorque));
             powerReceiver.setTorque(Math.min(loadTorque, maxTorque()));
         }

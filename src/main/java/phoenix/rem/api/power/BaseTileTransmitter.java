@@ -54,27 +54,27 @@ public abstract class BaseTileTransmitter extends BaseTileRotatable implements I
 
     public ForgeDirection output; // = getFacing();
     public Boolean isBroken = false;
-    public Float speed = 0.0F;
-    public Float torque = 0.0F;
+    public float speed = 0.0F;
+    public float torque = 0.0F;
     Boolean oiled = true; //TODO: this should be set on weather there is oil in the internal buffer or not
 
-    public void setSpeed(Float i){
+    public void setSpeed(float i){
         this.speed = i;
     }
 
-    public void setTorque(Float i){
+    public void setTorque(float i){
         this.torque = i;
     }
 
-    public Float getSpeed() {
+    public float getSpeed() {
         return speed;
     }
 
-    public Float getTorque() {
+    public float getTorque() {
         return torque;
     }
 
-    protected Float frictionWhenOiled(boolean oiled){
+    protected float frictionWhenOiled(boolean oiled){
         return (oiled ? 0.03F : 0.20F)*speed/maxSpeed();
     }
 

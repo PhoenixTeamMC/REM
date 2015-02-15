@@ -35,17 +35,17 @@ public class TEWoodCorner extends BaseTileTransmitter{
     }
 
     @Override
-    public Float maxSpeed() {
+    public float maxSpeed() {
         return 100.0F;
     }
 
     @Override
-    public Float maxTorque() {
+    public float maxTorque() {
         return 50.0F;
     }
 
     @Override
-    public Float minTorque() {
+    public float minTorque() {
         return 1.0F;
     }
 
