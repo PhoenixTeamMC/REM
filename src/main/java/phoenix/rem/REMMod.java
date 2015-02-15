@@ -47,7 +47,7 @@ public class REMMod extends ModBase{
 		log = event.getModLog();
 		
 		if (developmentEnvironment){
-			log.info("Running in Dev enviroment, enabling dev features.");
+			log.info("Running in Dev environment, enabling dev features.");
 		}else{
 			runUpdateCheck(event, "https://raw.githubusercontent.com/PhoenixTeamMC/REM/master/gradle.properties");
 		}
