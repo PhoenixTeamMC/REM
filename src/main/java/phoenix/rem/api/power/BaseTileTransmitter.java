@@ -32,8 +32,9 @@ public abstract class BaseTileTransmitter extends BaseTileRotatable implements I
 
     public void tryToEmitPower(IPowerReceiver powerReceiver){
         if (powerReceiver.canReceivePowerFromSide(output)){ //DirectionHelper.getOppositeSide(output))) {
-            powerReceiver.setSpeed(speed); //*((100-frictionWhenOiled(oiled))/100));
-            powerReceiver.setTorque(torque); //*((100-frictionWhenOiled(oiled))/100));
+            float friction = ((100f-frictionWhenOiled(oiled))/100f);  //make it semi-precise
+            powerReceiver.setSpeed(Float.floatToIntBits(speed*friction));
+            powerReceiver.setTorque(Float.floatToIntBits(torque*friction));
         }
     }
 
