@@ -11,6 +11,7 @@ import net.minecraftforge.client.IItemRenderer;
 import org.lwjgl.opengl.GL11;
 import phoenix.rem.blocks.tile.engine.TERedstoneEngine;
 import phoenix.rem.client.renderers.model.ModelRedstoneEngine;
+import phoenix.rem.data.ModInfo;
 
 /**
  * Created by Elec332 on 8-2-2015.
@@ -68,14 +69,14 @@ public class ItemRedstoneEngineRenderer implements IItemRenderer {
 			renderDCEngine((RenderBlocks) data[0], item, +0.5f, 0.5f, +0.5f, scale);
 			break;
 		case INVENTORY:
-			renderDCEngine((RenderBlocks) data[0], item, -0.5f, -0.75f, -0.5f, scale);
+			renderDCEngine((RenderBlocks) data[0], item, -0.5f, -0.5f, -0.5f, scale);
 			break;
 		default:
 			break;
 		}
 	}
 
-    private void renderDCEngine(RenderBlocks render, ItemStack item, float x, float y, float z, float scale) {
+    private void renderDCEngine(RenderBlocks render, ItemStack item, float x, float y, float z, float scaleq) {
 
         /*GL11.glPushMatrix();
         GL11.glTranslatef(x, y, z);
@@ -100,6 +101,16 @@ public class ItemRedstoneEngineRenderer implements IItemRenderer {
 		GL11.glPopMatrix();
 		GL11.glPopMatrix();
         */
-        this.renderer.renderTileEntityAt(dummyTE, 0.0, 0.0, 0.0, 0.0F);
+        this.renderer.renderTileEntityAt(dummyTE, x, y, z, 0.0F);
+		/*float scale = 0.07f;
+		//float rotation = getRotation(engine);
+		GL11.glPushMatrix();
+		GL11.glTranslatef((float) x + 0.5f, (float) y, (float) z + 0.5f);
+		GL11.glRotatef(0.0F, 0.0F, 1.0F, 0.0F);
+		GL11.glScalef(scale, scale, scale);
+		ResourceLocation test = new ResourceLocation(ModInfo.MODID + ":models/textures/test_0.png");
+		FMLClientHandler.instance().getClient().renderEngine.bindTexture(test);
+		modelRedstoneEngine.renderEngine();
+		GL11.glPopMatrix();*/
     }
 }
