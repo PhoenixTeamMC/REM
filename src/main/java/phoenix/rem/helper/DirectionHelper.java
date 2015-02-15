@@ -24,4 +24,16 @@ public class DirectionHelper {
                 return ForgeDirection.UNKNOWN;
         }
     }
+
+    public static ForgeDirection getFacingOnPlacement(float yaw){
+        if (yaw <= 90.0f)
+            return ForgeDirection.NORTH;
+        if (yaw > 90.0f && yaw <= 180.0f)
+            return ForgeDirection.EAST;
+        if (yaw > 180.0f && yaw <= 270.0f)
+            return ForgeDirection.SOUTH;
+        if (yaw > 270.0f && yaw <= 360f)
+            return ForgeDirection.WEST;
+        return ForgeDirection.UNKNOWN;
+    }
 }

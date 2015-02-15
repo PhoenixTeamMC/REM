@@ -2,13 +2,17 @@ package phoenix.rem.blocks;
 
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import phoenix.rem.api.types.EngineType;
+import phoenix.rem.api.wrench.BaseTileRotatable;
 import phoenix.rem.api.wrench.IWrenchable;
+import phoenix.rem.helper.DirectionHelper;
 
 import java.util.Random;
 
@@ -27,6 +31,14 @@ public abstract class BlockMachineBase extends BlockBase implements ITileEntityP
     @Override
     public int quantityDropped(Random random){
         return 0;
+    }
+
+    @Override
+    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entityLivingBase, ItemStack itemStack) {
+        TileEntity tileEntity = world.getTileEntity(x, y, z);
+        if (tileEntity instanceof BaseTileRotatable) {
+            ((BaseTileRotatable) tileEntity).setRotation(DirectionHelper.getFacingOnPlacement(entityLivingBase.rotationYaw));
+        }
     }
 
     @Override

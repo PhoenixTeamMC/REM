@@ -9,7 +9,7 @@ import net.minecraftforge.common.util.ForgeDirection;
  */
 public abstract class BaseTileRotatable extends TileEntity implements IRotatable {
 
-    ForgeDirection facing = ForgeDirection.SOUTH;
+    ForgeDirection facing = ForgeDirection.NORTH;
 
     @Override
     public Boolean rotateBlock(World world, int x, int y, int z) {
