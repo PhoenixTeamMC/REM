@@ -27,8 +27,8 @@ public abstract class BaseTileReceiver extends BaseTileRotatable implements IPow
     }
 
     public Boolean isBroken = false;
-    public Integer speed = 0;
-    public Integer torque = 0;
+    public int speed = 0;
+    public int torque = 0;
 
     public void setSpeed(int i){
         this.speed = i;
@@ -39,12 +39,12 @@ public abstract class BaseTileReceiver extends BaseTileRotatable implements IPow
     }
 
     @Override
-    public Integer getSpeed() {
+    public int getSpeed() {
         return speed;
     }
 
     @Override
-    public Integer getTorque() {
+    public int getTorque() {
         return torque;
     }
 

@@ -13,12 +13,12 @@ public class TERedstoneEngine extends BaseTileEngine {
     }
 
     @Override
-     protected Integer maxSpeed() {
+     protected int maxSpeed() {
         return 30;
     }
 
     @Override
-    protected Integer maxTorque() {
+    protected int maxTorque() {
         return 20;
     }
 }

@@ -21,32 +21,32 @@ public abstract class BaseTileEngine extends BaseTileRotatable{
 
     protected abstract Boolean isRunning();
 
-    protected abstract Integer maxSpeed();
+    protected abstract int maxSpeed();
 
-    protected abstract Integer maxTorque();
+    protected abstract int maxTorque();
 
-    protected Integer calculateTorque(int speed) {
+    protected int calculateTorque(int speed) {
         return maxTorque()-(maxTorque()*speed)/maxSpeed();
     }
 
-    protected Integer calculateSpeed(int loadTorque) {
+    protected int calculateSpeed(int loadTorque) {
         return maxSpeed()*(maxTorque()-loadTorque)/maxTorque();
     }
 
-    protected Integer powerFromTorque(int torque) {
+    protected int powerFromTorque(int torque) {
         return torque * calculateSpeed(torque);
     }
 
-    protected Integer powerFromSpeed(int speed) {
+    protected int powerFromSpeed(int speed) {
         return speed * calculateTorque(speed);
     }
 
-    protected Integer maxPower() {
+    protected int maxPower() {
         int optimalSpeed = speedForMaxPower();
         return optimalSpeed * calculateTorque(optimalSpeed);
     }
 
-    protected Integer speedForMaxPower() {
+    protected int speedForMaxPower() {
         return maxSpeed()/2;
     }
 

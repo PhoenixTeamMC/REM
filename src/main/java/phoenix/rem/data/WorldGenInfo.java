@@ -12,8 +12,8 @@ public class WorldGenInfo {
     int multiplier = 1;
     boolean shouldGen = true;
     int clusterSize = 0;
-    public Integer yLevelMax;
-    public Integer timesPerChunk;
+    public int yLevelMax;
+    public int timesPerChunk;
 
 
     //Sets worldGen info
@@ -33,7 +33,7 @@ public class WorldGenInfo {
     }
 
     //Gets worldGen info
-    public Integer getGenerationMultiplier(){
+    public int getGenerationMultiplier(){
         return multiplier;
     }
 
@@ -41,7 +41,7 @@ public class WorldGenInfo {
         return shouldGen;
     }
 
-    public Integer getClusterSize(){
+    public int getClusterSize(){
         return clusterSize;
     }
 }

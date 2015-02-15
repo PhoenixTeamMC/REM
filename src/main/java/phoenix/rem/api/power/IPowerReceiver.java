@@ -7,11 +7,11 @@ import net.minecraftforge.common.util.ForgeDirection;
  */
 public interface IPowerReceiver {
 
-    public Integer maxSpeed();
+    public int maxSpeed();
 
-    public Integer maxTorque();
+    public int maxTorque();
 
-    public Integer minTorque();
+    public int minTorque();
 
     Boolean doesExplode();
 
@@ -21,7 +21,7 @@ public interface IPowerReceiver {
 
     public void setSpeed(int i);
 
-    public Integer getTorque();
+    public int getTorque();
 
-    public Integer getSpeed();
+    public int getSpeed();
 }

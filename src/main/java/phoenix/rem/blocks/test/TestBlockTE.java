@@ -21,17 +21,17 @@ public class TestBlockTE extends BaseTileReceiver{
     }
 
     @Override
-    public Integer maxSpeed() {
+    public int maxSpeed() {
         return 200;
     }
 
     @Override
-    public Integer maxTorque() {
+    public int maxTorque() {
         return 100;
     }
 
     @Override
-    public Integer minTorque() {
+    public int minTorque() {
         return 1;
     }
 
