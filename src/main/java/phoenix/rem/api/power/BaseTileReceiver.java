@@ -27,24 +27,24 @@ public abstract class BaseTileReceiver extends BaseTileRotatable implements IPow
     }
 
     public Boolean isBroken = false;
-    public float speed = 0.0F;
-    public float torque = 0.0F;
+    public Float speed = 0.0F;
+    public Float torque = 0.0F;
 
-    public void setSpeed(float i){
+    public void setSpeed(Float i){
         this.speed = i;
     }
 
-    public void setTorque(float i){
+    public void setTorque(Float i){
         this.torque = i;
     }
 
     @Override
-    public float getSpeed() {
+    public Float getSpeed() {
         return speed;
     }
 
     @Override
-    public float getTorque() {
+    public Float getTorque() {
         return torque;
     }
 
