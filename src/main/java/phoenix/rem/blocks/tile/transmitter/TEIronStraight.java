@@ -7,18 +7,18 @@ import phoenix.rem.api.power.BaseTileTransmitter;
  */
 public class TEIronStraight extends BaseTileTransmitter {
     @Override
-    public Integer maxSpeed() {
-        return 700;
+    public Float maxSpeed() {
+        return 700.0F;
     }
 
     @Override
-    public Integer maxTorque() {
-        return 500;
+    public Float maxTorque() {
+        return 500.0F;
     }
 
     @Override
-    public Integer minTorque() {
-        return 5;
+    public Float minTorque() {
+        return 5.0F;
     }
 
     @Override

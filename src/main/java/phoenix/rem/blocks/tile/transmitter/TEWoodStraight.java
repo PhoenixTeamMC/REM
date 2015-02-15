@@ -8,18 +8,18 @@ import phoenix.rem.api.power.BaseTileTransmitter;
 public class TEWoodStraight extends BaseTileTransmitter {
 
     @Override
-    public Integer maxSpeed() {
-        return 100;
+    public Float maxSpeed() {
+        return 100.0F;
     }
 
     @Override
-    public Integer maxTorque() {
-        return 50;
+    public Float maxTorque() {
+        return 50.0F;
     }
 
     @Override
-    public Integer minTorque() {
-        return 1;
+    public Float minTorque() {
+        return 1.0F;
     }
 
     @Override
