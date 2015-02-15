@@ -6,6 +6,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import phoenix.rem.data.ModInfo;
+import phoenix.rem.init.BlockRegist;
 
 /**
  * Created by Elec332 on 5-2-2015.
@@ -16,7 +17,7 @@ public class CTabs {
         @SideOnly(Side.CLIENT)
         public Item getTabIconItem()
         {
-            return Item.getItemFromBlock(Blocks.anvil);
+            return Item.getItemFromBlock(BlockRegist.RedstoneEngine);
         }
     };
 
