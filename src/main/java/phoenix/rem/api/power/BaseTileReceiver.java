@@ -18,8 +18,8 @@ public abstract class BaseTileReceiver extends BaseTileRotatable implements IPow
                     worldObj.spawnEntityInWorld(boom);
                 } else this.isBroken = true; //TODO: make wrench fix machine when broken with fancy gui 'n stuff
             } else if ( speed >= 0 && torque >= minTorque()) {
-                this.speed = 0.0F;
-                this.torque = 0.0F;
+                this.speed = 0;
+                this.torque = 0;
                 return true;
             }
         }
@@ -27,24 +27,24 @@ public abstract class BaseTileReceiver extends BaseTileRotatable implements IPow
     }
 
     public Boolean isBroken = false;
-    public Float speed = 0.0F;
-    public Float torque = 0.0F;
+    public Integer speed = 0;
+    public Integer torque = 0;
 
-    public void setSpeed(Float i){
+    public void setSpeed(int i){
         this.speed = i;
     }
 
-    public void setTorque(Float i){
+    public void setTorque(int i){
         this.torque = i;
     }
 
     @Override
-    public Float getSpeed() {
+    public Integer getSpeed() {
         return speed;
     }
 
     @Override
-    public Float getTorque() {
+    public Integer getTorque() {
         return torque;
     }
 

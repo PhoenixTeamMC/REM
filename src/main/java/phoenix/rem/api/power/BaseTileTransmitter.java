@@ -24,8 +24,8 @@ public abstract class BaseTileTransmitter extends BaseTileRotatable implements I
                 if (getPowerReceiver() instanceof IPowerReceiver) {
                     tryToEmitPower((IPowerReceiver) getPowerReceiver());
                 }
-                this.speed = 0.0F;
-                this.torque = 0.0F;
+                this.speed = 0;
+                this.torque = 0;
             }
         }
     }
@@ -54,28 +54,28 @@ public abstract class BaseTileTransmitter extends BaseTileRotatable implements I
 
     public ForgeDirection output; // = getFacing();
     public Boolean isBroken = false;
-    public Float speed = 0.0F;
-    public Float torque = 0.0F;
+    public Integer speed = 0;
+    public Integer torque = 0;
     Boolean oiled = true; //TODO: this should be set on weather there is oil in the internal buffer or not
 
-    public void setSpeed(Float i){
+    public void setSpeed(int i){
         this.speed = i;
     }
 
-    public void setTorque(Float i){
+    public void setTorque(int i){
         this.torque = i;
     }
 
-    public Float getSpeed() {
+    public Integer getSpeed() {
         return speed;
     }
 
-    public Float getTorque() {
+    public Integer getTorque() {
         return torque;
     }
 
-    protected Float frictionWhenOiled(boolean oiled){
-        return (oiled ? 0.03F : 0.20F)*speed/maxSpeed();
+    protected Integer frictionWhenOiled(boolean oiled){
+        return (oiled ? 3 : 20)*speed/maxSpeed();
     }
 
     public Boolean canReceivePowerFromSide(ForgeDirection direction) {

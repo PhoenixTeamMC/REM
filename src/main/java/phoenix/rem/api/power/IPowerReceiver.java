@@ -7,21 +7,21 @@ import net.minecraftforge.common.util.ForgeDirection;
  */
 public interface IPowerReceiver {
 
-    public Float maxSpeed();
+    public Integer maxSpeed();
 
-    public Float maxTorque();
+    public Integer maxTorque();
 
-    public Float minTorque();
+    public Integer minTorque();
 
     Boolean doesExplode();
 
     public Boolean canReceivePowerFromSide(ForgeDirection direction);
 
-    public void setTorque(Float i);
+    public void setTorque(int i);
 
-    public void setSpeed(Float i);
+    public void setSpeed(int i);
 
-    public Float getTorque();
+    public Integer getTorque();
 
-    public Float getSpeed();
+    public Integer getSpeed();
 }
