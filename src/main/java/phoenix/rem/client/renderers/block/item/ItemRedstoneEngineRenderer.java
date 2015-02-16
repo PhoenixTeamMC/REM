@@ -101,16 +101,16 @@ public class ItemRedstoneEngineRenderer implements IItemRenderer {
 		GL11.glPopMatrix();
 		GL11.glPopMatrix();
         */
-        this.renderer.renderTileEntityAt(dummyTE, x, y, z, 0.0F);
-		/*float scale = 0.07f;
+        //this.renderer.renderTileEntityAt(dummyTE, x, y, z, 0.0F);
+		float scale = 0.07f;
 		//float rotation = getRotation(engine);
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) x + 0.5f, (float) y, (float) z + 0.5f);
-		GL11.glRotatef(0.0F, 0.0F, 1.0F, 0.0F);
+		//GL11.glRotatef(0.0F, 0.0F, 1.0F, 0.0F);
 		GL11.glScalef(scale, scale, scale);
 		ResourceLocation test = new ResourceLocation(ModInfo.MODID + ":models/textures/test_0.png");
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(test);
 		modelRedstoneEngine.renderEngine();
-		GL11.glPopMatrix();*/
+		GL11.glPopMatrix();
     }
 }
