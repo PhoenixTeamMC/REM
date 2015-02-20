@@ -12,12 +12,12 @@ import phoenix.rem.blocks.tile.engine.TERedstoneEngine;
  * Created by Elec332 on 8-2-2015.
  */
 public class Engine extends BlockMachineBase implements ITileEntityProvider, IWrenchable{
+    EngineType type;
+
     public Engine(EngineType type){
         super(Material.anvil, "engine."+type.toString().toLowerCase());
         this.type = type;
     }
-
-    EngineType type;
 
     @Override
     public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {

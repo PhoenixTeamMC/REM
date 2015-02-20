@@ -1,17 +1,15 @@
 package phoenix.rem.client.renderers.model;
 
-import cpw.mods.fml.client.FMLClientHandler;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.client.model.AdvancedModelLoader;
 import net.minecraftforge.client.model.IModelCustom;
+
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
+
 import phoenix.rem.blocks.tile.engine.TERedstoneEngine;
 import phoenix.rem.data.ModInfo;
-import phoenix.rem.init.BlockRegist;
+import cpw.mods.fml.client.FMLClientHandler;
 
 /**
  * Created by Elec332 on 8-2-2015.

@@ -12,8 +12,8 @@ import phoenix.rem.data.ModInfo;
  * Created by Elec332 on 11-2-2015.
  */
 public class BasicModel extends ModelBase {
-    private IModelCustom Model;
     private String location;
+    private IModelCustom Model;
 
     public BasicModel(String objFile, String texture) {
         this.Model = AdvancedModelLoader.loadModel(new ResourceLocation(ModInfo.MODID + ":models/" + objFile + ".obj"));

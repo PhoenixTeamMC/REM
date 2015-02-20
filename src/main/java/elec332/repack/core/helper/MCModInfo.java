@@ -23,16 +23,6 @@ public class MCModInfo {
 		meta.authorList = Lists.newArrayList(authors);
 	}
 
-	public static void CreateMCModInfo(FMLPreInitializationEvent event, String credits, String desc, String url, String logo, String[] authors)
-	{
-		CreateMCModInfo(event, ModInfoHelper.getModID(event), ModInfoHelper.getModName(event), credits, desc, url, logo, authors);
-	}
-
-	public static void CreateMCModInfoElec(FMLPreInitializationEvent event, String desc, String url, String logo, String[] authors)
-	{
-		CreateMCModInfo(event, "Created by Elec332", desc, url, logo, authors);
-	}
-
 	public static void CreateMCModInfo(FMLPreInitializationEvent event, String modid, String name, String credits, String desc, String url, String logo, String[] authors)
 	{
 		ModMetadata meta = event.getModMetadata();
@@ -44,5 +34,15 @@ public class MCModInfo {
 		meta.url = url;
 		meta.logoFile = logo;
 		meta.authorList = Lists.newArrayList(authors);
+	}
+
+	public static void CreateMCModInfo(FMLPreInitializationEvent event, String credits, String desc, String url, String logo, String[] authors)
+	{
+		CreateMCModInfo(event, ModInfoHelper.getModID(event), ModInfoHelper.getModName(event), credits, desc, url, logo, authors);
+	}
+
+	public static void CreateMCModInfoElec(FMLPreInitializationEvent event, String desc, String url, String logo, String[] authors)
+	{
+		CreateMCModInfo(event, "Created by Elec332", desc, url, logo, authors);
 	}
 }

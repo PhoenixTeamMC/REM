@@ -11,10 +11,6 @@ import net.minecraftforge.oredict.OreDictionary;
  */
 public class RegisterHelper {
 
-    public void registerBlock(Block block){
-        registerBlock(block, block.getUnlocalizedName().substring(5));
-    }
-
     public static void registerBlock(Block block, String blockname){
         GameRegistry.registerBlock(block, blockname);
     }
@@ -29,5 +25,9 @@ public class RegisterHelper {
 
     public static void registerOreDict(Item item, String OreDictname){
         OreDictionary.registerOre(OreDictname, new ItemStack(item));
+    }
+
+    public void registerBlock(Block block){
+        registerBlock(block, block.getUnlocalizedName().substring(5));
     }
 }

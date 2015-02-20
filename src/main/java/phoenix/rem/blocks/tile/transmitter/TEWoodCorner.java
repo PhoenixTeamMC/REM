@@ -9,7 +9,7 @@ import phoenix.rem.api.power.BaseTileTransmitter;
 public class TEWoodCorner extends BaseTileTransmitter{
 
     @Override
-    public Boolean canReceivePowerFromSide(ForgeDirection direction) {
+    public boolean canReceivePowerFromSide(ForgeDirection direction) {
         switch (direction){
             /*case NORTH:
                 return getFacing() == ForgeDirection.NORTH || getFacing() == ForgeDirection.WEST;*/
@@ -35,6 +35,11 @@ public class TEWoodCorner extends BaseTileTransmitter{
     }
 
     @Override
+    public boolean doesExplode() {
+        return false;
+    }
+
+    @Override
     public int maxSpeed() {
         return 100;
     }
@@ -47,10 +52,5 @@ public class TEWoodCorner extends BaseTileTransmitter{
     @Override
     public int minTorque() {
         return 1;
-    }
-
-    @Override
-    public Boolean doesExplode() {
-        return false;
     }
 }

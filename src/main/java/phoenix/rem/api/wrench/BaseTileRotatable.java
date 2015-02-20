@@ -12,6 +12,11 @@ public abstract class BaseTileRotatable extends TileEntity implements IRotatable
     ForgeDirection facing = ForgeDirection.NORTH;
 
     @Override
+    public ForgeDirection getFacing() {
+        return facing;
+    }
+
+    @Override
     public Boolean rotateBlock(World world, int x, int y, int z) {
         switch (facing){
             case SOUTH:
@@ -29,11 +34,6 @@ public abstract class BaseTileRotatable extends TileEntity implements IRotatable
         }
         //world.markBlockForUpdate(x, y, z);
         return true;
-    }
-
-    @Override
-    public ForgeDirection getFacing() {
-        return facing;
     }
 
     public void setRotation(ForgeDirection direction){

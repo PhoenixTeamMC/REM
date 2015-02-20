@@ -12,12 +12,12 @@ import phoenix.rem.blocks.tile.transmitter.TEWoodStraight;
  */
 public class TransmitterStraight extends BlockMachineBase {
 
+    TransmitterType type;
+
     public TransmitterStraight(TransmitterType type){
         super(Material.anvil, "transmitter.straight."+type.toString().toLowerCase());
         this.type = type;
     }
-
-    TransmitterType type;
 
     @Override
     public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {

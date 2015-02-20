@@ -26,12 +26,12 @@ import java.util.Random;
 public class BlockBase extends Block {
 	
 
-    Boolean opaqueCube;
+    static String modID = ModInfo.MODID;
+    int amountDropped;
     Item dropped;
     boolean ghost;
     String name;
-    static String modID = ModInfo.MODID;
-    int amountDropped;
+    Boolean opaqueCube;
 	
     public BlockBase(Material baseMaterial, String blockName) {
         super(baseMaterial);
@@ -51,37 +51,16 @@ public class BlockBase extends Block {
         this.amountDropped = setQuantityDropped;
     }
 
-    public BlockBase setGhost(){
-        this.ghost = true;
-        this.setNoOpaqueCube();
-        return this;
-    }
-
-    public BlockBase setItemDropped(Item itemDropped){
-        this.dropped = itemDropped;
-        return this;
-    }
-
-    //I know vanilla has this, but that's a void, this isn't ;)
-    public BlockBase setToolLevel(String toolClass, int level){
-        this.setHarvestLevel(toolClass, level);
-        return this;
-    }
-
-    public BlockBase setNoOpaqueCube(){
-        this.opaqueCube = false;
-        return this;
-    }
-
-    public BlockBase setQuantityDropped(int setQuantityDropped){
-        this.amountDropped = setQuantityDropped;
-        return this;
+    @Override
+    public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z){
+        if (ghost)
+            return null;
+        return AxisAlignedBB.getBoundingBox((double)x + this.minX, (double)y + this.minY, (double)z + this.minZ, (double)x + this.maxX, (double)y + this.maxY, (double)z + this.maxZ);
     }
 
     @Override
-    @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister iconRegister){
-        blockIcon = iconRegister.registerIcon(this.getTextureName());
+    public Item getItemDropped(int par1, Random rand, int par2){
+        return dropped != null ? dropped : super.getItemDropped(par1, rand, par2);
     }
 
     @Override
@@ -98,25 +77,46 @@ public class BlockBase extends Block {
     }
 
     @Override
-    public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z){
-        if (ghost)
-            return null;
-        return AxisAlignedBB.getBoundingBox((double)x + this.minX, (double)y + this.minY, (double)z + this.minZ, (double)x + this.maxX, (double)y + this.maxY, (double)z + this.maxZ);
-    }
-
-    @Override
     public int quantityDropped(Random random){
         return amountDropped;
     }
 
     @Override
-    public Item getItemDropped(int par1, Random rand, int par2){
-        return dropped != null ? dropped : super.getItemDropped(par1, rand, par2);
+    @SideOnly(Side.CLIENT)
+    public void registerBlockIcons(IIconRegister iconRegister){
+        blockIcon = iconRegister.registerIcon(this.getTextureName());
     }
 
     @Override
     public boolean rotateBlock(World world, int x, int y, int z, ForgeDirection direction) {
         TileEntity tile = world.getTileEntity(x, y, z);
         return tile instanceof IRotatable ?((IRotatable)tile).rotateBlock(world, x, y, z):false;
+    }
+
+    public BlockBase setGhost(){
+        this.ghost = true;
+        this.setNoOpaqueCube();
+        return this;
+    }
+
+    public BlockBase setItemDropped(Item itemDropped){
+        this.dropped = itemDropped;
+        return this;
+    }
+
+    public BlockBase setNoOpaqueCube(){
+        this.opaqueCube = false;
+        return this;
+    }
+
+    public BlockBase setQuantityDropped(int setQuantityDropped){
+        this.amountDropped = setQuantityDropped;
+        return this;
+    }
+
+    //I know vanilla has this, but that's a void, this isn't ;)
+    public BlockBase setToolLevel(String toolClass, int level){
+        this.setHarvestLevel(toolClass, level);
+        return this;
     }
 }

@@ -11,13 +11,8 @@ import phoenix.rem.api.power.BaseTileReceiver;
 public class TestBlockTE extends BaseTileReceiver{
 
     @Override
-    public void updateEntity(){
-        if (!worldObj.isRemote) {
-            if (canWork()) {
-                worldObj.spawnEntityInWorld(new EntityItem(worldObj, xCoord, yCoord + 2, zCoord, new ItemStack(Items.baked_potato)));
-                //worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
-            }
-        }
+    public boolean doesExplode() {
+        return false;
     }
 
     @Override
@@ -36,7 +31,12 @@ public class TestBlockTE extends BaseTileReceiver{
     }
 
     @Override
-    public Boolean doesExplode() {
-        return false;
+    public void updateEntity(){
+        if (!worldObj.isRemote) {
+            if (canWork()) {
+                worldObj.spawnEntityInWorld(new EntityItem(worldObj, xCoord, yCoord + 2, zCoord, new ItemStack(Items.baked_potato)));
+                //worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+            }
+        }
     }
 }

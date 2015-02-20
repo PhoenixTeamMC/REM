@@ -8,6 +8,11 @@ import phoenix.rem.api.power.BaseTileTransmitter;
 public class TEWoodStraight extends BaseTileTransmitter {
 
     @Override
+    public boolean doesExplode() {
+        return false;
+    }
+
+    @Override
     public int maxSpeed() {
         return 100;
     }
@@ -20,10 +25,5 @@ public class TEWoodStraight extends BaseTileTransmitter {
     @Override
     public int minTorque() {
         return 1;
-    }
-
-    @Override
-    public Boolean doesExplode() {
-        return false;
     }
 }

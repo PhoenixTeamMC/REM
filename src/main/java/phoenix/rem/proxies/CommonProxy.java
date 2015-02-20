@@ -19,6 +19,8 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(new EventHandlerCommon());
     }
 
+    public void registerRenderer(){}
+
     public void registerTileEntities(){
         GameRegistry.registerTileEntity(TestBlockTE.class, "Test");
         GameRegistry.registerTileEntity(TERedstoneEngine.class, "EngineRedstone");
@@ -26,6 +28,4 @@ public class CommonProxy {
         GameRegistry.registerTileEntity(TEIronStraight.class, "IronSTransmitter");
         GameRegistry.registerTileEntity(TEWoodCorner.class, "WoodCTransmitter");
     }
-
-    public void registerRenderer(){}
 }

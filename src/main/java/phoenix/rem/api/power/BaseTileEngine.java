@@ -9,53 +9,12 @@ import phoenix.rem.helper.DirectionHelper;
  */
 public abstract class BaseTileEngine extends BaseTileRotatable{
 
-    @Override
-    public void updateEntity(){
-        if (isRunning()) {
-            if (getPowerReceiver() instanceof IPowerReceiver) {
-                tryToEmitPower((IPowerReceiver) getPowerReceiver());
-            }
-        }
-        //worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
-    }
-
-    protected abstract Boolean isRunning();
-
-    protected abstract int maxSpeed();
-
-    protected abstract int maxTorque();
-
-    protected int calculateTorque(int speed) {
-        return maxTorque()-(maxTorque()*speed)/maxSpeed();
-    }
-
     protected int calculateSpeed(int loadTorque) {
         return maxSpeed()*(maxTorque()-loadTorque)/maxTorque();
     }
 
-    protected int powerFromTorque(int torque) {
-        return torque * calculateSpeed(torque);
-    }
-
-    protected int powerFromSpeed(int speed) {
-        return speed * calculateTorque(speed);
-    }
-
-    protected int maxPower() {
-        int optimalSpeed = speedForMaxPower();
-        return optimalSpeed * calculateTorque(optimalSpeed);
-    }
-
-    protected int speedForMaxPower() {
-        return maxSpeed()/2;
-    }
-
-    public void tryToEmitPower(IPowerReceiver powerReceiver){
-        if (powerReceiver.canReceivePowerFromSide(DirectionHelper.getOppositeSide(getFacing()))) {
-            int loadTorque = powerReceiver.getTorque();
-            powerReceiver.setSpeed(calculateSpeed(loadTorque));
-            powerReceiver.setTorque(Math.min(loadTorque, maxTorque()));
-        }
+    protected int calculateTorque(int speed) {
+        return maxTorque()-(maxTorque()*speed)/maxSpeed();
     }
 
     public TileEntity getPowerReceiver(){
@@ -71,5 +30,45 @@ public abstract class BaseTileEngine extends BaseTileRotatable{
             default:
                 return null;
         }
+    }
+
+    protected abstract Boolean isRunning();
+
+    protected int maxPower() {
+        int optimalSpeed = speedForMaxPower();
+        return optimalSpeed * calculateTorque(optimalSpeed);
+    }
+
+    protected abstract int maxSpeed();
+
+    protected abstract int maxTorque();
+
+    protected int powerFromSpeed(int speed) {
+        return speed * calculateTorque(speed);
+    }
+
+    protected int powerFromTorque(int torque) {
+        return torque * calculateSpeed(torque);
+    }
+
+    protected int speedForMaxPower() {
+        return maxSpeed()/2;
+    }
+
+    public void tryToEmitPower(IPowerReceiver powerReceiver){
+        if (powerReceiver.canReceivePowerFromSide(DirectionHelper.getOppositeSide(getFacing()))) {
+            int loadTorque = powerReceiver.getTorque();
+            powerReceiver.recievePower(Math.min(loadTorque, maxTorque()), (calculateSpeed(loadTorque)));
+        }
+    }
+
+    @Override
+    public void updateEntity(){
+        if (isRunning()) {
+            if (getPowerReceiver() instanceof IPowerReceiver) {
+                tryToEmitPower((IPowerReceiver) getPowerReceiver());
+            }
+        }
+        //worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
     }
 }

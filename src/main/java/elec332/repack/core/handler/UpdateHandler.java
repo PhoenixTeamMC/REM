@@ -1,29 +1,29 @@
 package elec332.repack.core.handler;
 
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.PlayerEvent;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.util.ChatComponentText;
-import static net.minecraft.util.EnumChatFormatting.*;
+import static net.minecraft.util.EnumChatFormatting.GOLD;
+import static net.minecraft.util.EnumChatFormatting.RED;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.util.ChatComponentText;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent;
 
 /**
  * Created by Elec332 on 20-1-2015.
  */
 public class UpdateHandler {
 
-    public static LinkedHashMap<String, ArrayList> Updates = new LinkedHashMap<String, ArrayList>();
-    public static ArrayList<String> outdatedModList = new ArrayList<String>();
+    public static LinkedHashMap<String, ArrayList<String>> updates = new LinkedHashMap<String, ArrayList<String>>();
 
     @SubscribeEvent
     public void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
         if (event.player instanceof EntityPlayerMP) {
             EntityPlayerMP player = (EntityPlayerMP) event.player;
-            for (String modName : outdatedModList) {
-                ArrayList info = Updates.get(modName);
+            for (String modName : updates.keySet()) {
+                ArrayList<String> info = updates.get(modName);
                 player.addChatComponentMessage(new ChatComponentText( RED +
                         "You are using an outdated version of: " + modName
                 ));

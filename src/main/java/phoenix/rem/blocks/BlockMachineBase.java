@@ -22,16 +22,26 @@ import java.util.Random;
  */
 public abstract class BlockMachineBase extends BlockBase implements ITileEntityProvider, IWrenchable {
 
+    EngineType type;
+
     public BlockMachineBase(Material mat, String name) {
         super(mat, name);
         setNoOpaqueCube();
     }
 
-    EngineType type;
+    @Override
+    public Item getItemDropped(int par1, Random rand, int par2) {
+        return null;
+    }
 
     @Override
-    public int quantityDropped(Random random) {
-        return 0;
+    public int getRenderType() {
+        return -1;
+    }
+
+    @Override
+    public ItemStack ItemDropped() {
+        return new ItemStack(ItemBlock.getItemFromBlock(this));
     }
 
     @Override
@@ -43,8 +53,13 @@ public abstract class BlockMachineBase extends BlockBase implements ITileEntityP
     }
 
     @Override
-    public Item getItemDropped(int par1, Random rand, int par2) {
-        return null;
+    public void onWrenched(World world, int x, int y, int z, ForgeDirection direction) {
+        rotateBlock(world, x, y, z, direction);
+    }
+
+    @Override
+    public int quantityDropped(Random random) {
+        return 0;
     }
 
     @Override
@@ -53,22 +68,7 @@ public abstract class BlockMachineBase extends BlockBase implements ITileEntityP
     }
 
     @Override
-    public int getRenderType() {
-        return -1;
-    }
-
-    @Override
     public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int i) {
         return true;
-    }
-
-    @Override
-    public ItemStack ItemDropped() {
-        return new ItemStack(ItemBlock.getItemFromBlock(this));
-    }
-
-    @Override
-    public void onWrenched(World world, int x, int y, int z, ForgeDirection direction) {
-        rotateBlock(world, x, y, z, direction);
     }
 }

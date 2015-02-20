@@ -14,6 +14,15 @@ public abstract class BaseTileReceiver extends BaseTileRotatable implements IPow
 	public int speed = 0;
 	public int torque = 0;
 	
+	@Override
+	public boolean canReceivePowerFromSide(ForgeDirection direction){
+		return DirectionHelper.getOppositeSide(getFacing()) == direction;
+	}
+
+	//IPowerReciever
+
+	
+	
 	public boolean canWork(){
 		if (!isBroken){
 			if (speed >= maxSpeed() || torque >= maxTorque()){
@@ -33,19 +42,9 @@ public abstract class BaseTileReceiver extends BaseTileRotatable implements IPow
 		return false;
 	}
 
-	//IPowerReciever
-
-	
-	
 	@Override
 	public int getSpeed(){
 		return speed;
-	}
-
-	@Override
-	public void recievePower(int torque, int speed){
-		this.torque += torque;
-		this.speed += speed;
 	}
 
 	@Override
@@ -54,8 +53,9 @@ public abstract class BaseTileReceiver extends BaseTileRotatable implements IPow
 	}
 
 	@Override
-	public boolean canReceivePowerFromSide(ForgeDirection direction){
-		return DirectionHelper.getOppositeSide(getFacing()) == direction;
+	public void recievePower(int torque, int speed){
+		this.torque += torque;
+		this.speed += speed;
 	}
 
 }

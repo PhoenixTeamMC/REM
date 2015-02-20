@@ -7,6 +7,11 @@ import phoenix.rem.api.power.BaseTileTransmitter;
  */
 public class TEIronStraight extends BaseTileTransmitter {
     @Override
+    public boolean doesExplode() {
+        return false;
+    }
+
+    @Override
     public int maxSpeed() {
         return 700;
     }
@@ -19,10 +24,5 @@ public class TEIronStraight extends BaseTileTransmitter {
     @Override
     public int minTorque() {
         return 5;
-    }
-
-    @Override
-    public Boolean doesExplode() {
-        return false;
     }
 }

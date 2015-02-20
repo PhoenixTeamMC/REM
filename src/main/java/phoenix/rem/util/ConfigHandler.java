@@ -22,153 +22,22 @@ public class ConfigHandler {
 		modVersion = version;
 	}
 
-	public ConfigHandler setConfiguration(Configuration config) {
+	public void cleanUp(boolean delConfig, boolean saveVersion) {
 
-		modConfiguration = config;
-		modConfiguration.load();
+		removeProperty("version", "version");
+		removeProperty("version", "Version");
+		removeProperty("general", "version");
+		removeProperty("general", "Version");
+		removeProperty("Version", "Identifier");
 
-		return this;
-	}
-
-	public Configuration getConfiguration() {
-
-		return modConfiguration;
-	}
-
-	public String getVersion() {
-
-		return modVersion;
-	}
-
-	public String getConfigVersion() {
-
-		return get("Version", "Identifier", modVersion);
-	}
-
-	public boolean isOldConfig() {
-
-		return !getConfigVersion().equals(modVersion);
-	}
-
-	public void load(){
-		modConfiguration.load();
-	}
-	
-	public void save() {
-
+		if (saveVersion) {
+			getConfigVersion();
+		}
 		modConfiguration.save();
-	}
 
-	public void sync(){
-		load();
-		save();
-	}
-
-	/* Shortcuts */
-	public double get(String category, String key, double defaultValue) {
-
-		return modConfiguration.get(category, key, defaultValue, null).getDouble(0);
-	}
-
-	public double get(String category, String key, double defaultValue, String comment) {
-
-		return modConfiguration.get(category, key, defaultValue, comment).getDouble(0);
-	}
-
-	public int get(String category, String key, int defaultValue) {
-
-		return modConfiguration.get(category, key, defaultValue, null).getInt();
-	}
-
-	public int get(String category, String key, int defaultValue, String comment) {
-
-		return modConfiguration.get(category, key, defaultValue, comment).getInt();
-	}
-
-	public boolean get(String category, String key, boolean defaultValue) {
-
-		return modConfiguration.get(category, key, defaultValue, null).getBoolean(defaultValue);
-	}
-
-	public boolean get(String category, String key, boolean defaultValue, String comment) {
-
-		return modConfiguration.get(category, key, defaultValue, comment).getBoolean(defaultValue);
-	}
-
-	public String get(String category, String key, String defaultValue) {
-
-		return modConfiguration.get(category, key, defaultValue, null).getString();
-	}
-
-	public String get(String category, String key, String defaultValue, String comment) {
-
-		return modConfiguration.get(category, key, defaultValue, comment).getString();
-	}
-
-	public void set(String category, String key, double value) {
-
-		getProperty(category, key, value).set(value);
-	}
-
-	public void set(String category, String key, int value) {
-
-		getProperty(category, key, value).set(value);
-	}
-
-	public void set(String category, String key, boolean value) {
-
-		getProperty(category, key, value).set(value);
-	}
-
-	public void set(String category, String key, String value) {
-
-		getProperty(category, key, value).set(value);
-	}
-
-	/* Properties */
-	public Property getProperty(String category, String key, double defaultValue) {
-
-		return modConfiguration.get(category, key, defaultValue);
-	}
-
-	public Property getProperty(String category, String key, int defaultValue) {
-
-		return modConfiguration.get(category, key, defaultValue);
-	}
-
-	public Property getProperty(String category, String key, boolean defaultValue) {
-
-		return modConfiguration.get(category, key, defaultValue);
-	}
-
-	public Property getProperty(String category, String key, String defaultValue) {
-
-		return modConfiguration.get(category, key, defaultValue);
-	}
-
-	public ConfigCategory getCategory(String category) {
-
-		return modConfiguration.getCategory(category);
-	}
-
-	public Set<String> getCategoryNames() {
-
-		return modConfiguration.getCategoryNames();
-	}
-
-	public Set<String> getCategoryKeys(String category) {
-
-		return modConfiguration.getCategory(category).getValues().keySet();
-	}
-
-	public boolean hasCategory(String category) {
-
-		return modConfiguration.hasCategory(category);
-	}
-
-	public boolean hasKey(String category, String key) {
-
-		return modConfiguration.hasKey(category, key);
+		if (delConfig) {
+			modConfiguration = null;
+		}
 	}
 
 	public boolean copyProperty(String category, String key, String newCategory, String newKey, boolean forceValue) {
@@ -208,6 +77,148 @@ public class ConfigHandler {
 			return true;
 		}
 		return false;
+	}
+
+	public boolean get(String category, String key, boolean defaultValue) {
+
+		return modConfiguration.get(category, key, defaultValue, null).getBoolean(defaultValue);
+	}
+
+	public boolean get(String category, String key, boolean defaultValue, String comment) {
+
+		return modConfiguration.get(category, key, defaultValue, comment).getBoolean(defaultValue);
+	}
+
+	/* Shortcuts */
+	public double get(String category, String key, double defaultValue) {
+
+		return modConfiguration.get(category, key, defaultValue, null).getDouble(0);
+	}
+
+	public double get(String category, String key, double defaultValue, String comment) {
+
+		return modConfiguration.get(category, key, defaultValue, comment).getDouble(0);
+	}
+	
+	public int get(String category, String key, int defaultValue) {
+
+		return modConfiguration.get(category, key, defaultValue, null).getInt();
+	}
+
+	public int get(String category, String key, int defaultValue, String comment) {
+
+		return modConfiguration.get(category, key, defaultValue, comment).getInt();
+	}
+
+	public String get(String category, String key, String defaultValue) {
+
+		return modConfiguration.get(category, key, defaultValue, null).getString();
+	}
+
+	public String get(String category, String key, String defaultValue, String comment) {
+
+		return modConfiguration.get(category, key, defaultValue, comment).getString();
+	}
+
+	public ConfigCategory getCategory(String category) {
+
+		return modConfiguration.getCategory(category);
+	}
+
+	public Set<String> getCategoryKeys(String category) {
+
+		return modConfiguration.getCategory(category).getValues().keySet();
+	}
+
+	public Set<String> getCategoryNames() {
+
+		return modConfiguration.getCategoryNames();
+	}
+
+	public Configuration getConfiguration() {
+
+		return modConfiguration;
+	}
+
+	public String getConfigVersion() {
+
+		return get("Version", "Identifier", modVersion);
+	}
+
+	public Property getProperty(String category, String key, boolean defaultValue) {
+
+		return modConfiguration.get(category, key, defaultValue);
+	}
+
+	/* Properties */
+	public Property getProperty(String category, String key, double defaultValue) {
+
+		return modConfiguration.get(category, key, defaultValue);
+	}
+
+	public Property getProperty(String category, String key, int defaultValue) {
+
+		return modConfiguration.get(category, key, defaultValue);
+	}
+
+	public Property getProperty(String category, String key, String defaultValue) {
+
+		return modConfiguration.get(category, key, defaultValue);
+	}
+
+	public String getVersion() {
+
+		return modVersion;
+	}
+
+	public boolean hasCategory(String category) {
+
+		return modConfiguration.hasCategory(category);
+	}
+
+	public boolean hasKey(String category, String key) {
+
+		return modConfiguration.hasKey(category, key);
+	}
+
+	public boolean isOldConfig() {
+
+		return !getConfigVersion().equals(modVersion);
+	}
+
+	public void load(){
+		modConfiguration.load();
+	}
+
+	public boolean removeCategory(String category) {
+
+		if (!modConfiguration.hasCategory(category)) {
+			return false;
+		}
+		modConfiguration.removeCategory(modConfiguration.getCategory(category));
+		return true;
+	}
+
+	public boolean removeProperty(String category, String key) {
+
+		if (!modConfiguration.hasKey(category, key)) {
+			return false;
+		}
+		modConfiguration.getCategory(category).remove(key);
+		return true;
+	}
+
+	public boolean renameCategory(String category, String newCategory) {
+
+		if (!modConfiguration.hasCategory(category)) {
+			return false;
+		}
+		modConfiguration.getCategory(category);
+		for (Property prop : modConfiguration.getCategory(category).values()) {
+			copyProperty(category, prop.getName(), newCategory, prop.getName(), true);
+		}
+		removeCategory(category);
+		return true;
 	}
 
 	public boolean renameProperty(String category, String key, String newCategory, String newKey, boolean forceValue) {
@@ -253,53 +264,42 @@ public class ConfigHandler {
 		return false;
 	}
 
-	public boolean removeProperty(String category, String key) {
+	public void save() {
 
-		if (!modConfiguration.hasKey(category, key)) {
-			return false;
-		}
-		modConfiguration.getCategory(category).remove(key);
-		return true;
-	}
-
-	public boolean renameCategory(String category, String newCategory) {
-
-		if (!modConfiguration.hasCategory(category)) {
-			return false;
-		}
-		modConfiguration.getCategory(category);
-		for (Property prop : modConfiguration.getCategory(category).values()) {
-			copyProperty(category, prop.getName(), newCategory, prop.getName(), true);
-		}
-		removeCategory(category);
-		return true;
-	}
-
-	public boolean removeCategory(String category) {
-
-		if (!modConfiguration.hasCategory(category)) {
-			return false;
-		}
-		modConfiguration.removeCategory(modConfiguration.getCategory(category));
-		return true;
-	}
-
-	public void cleanUp(boolean delConfig, boolean saveVersion) {
-
-		removeProperty("version", "version");
-		removeProperty("version", "Version");
-		removeProperty("general", "version");
-		removeProperty("general", "Version");
-		removeProperty("Version", "Identifier");
-
-		if (saveVersion) {
-			getConfigVersion();
-		}
 		modConfiguration.save();
+	}
 
-		if (delConfig) {
-			modConfiguration = null;
-		}
+	public void set(String category, String key, boolean value) {
+
+		getProperty(category, key, value).set(value);
+	}
+
+	public void set(String category, String key, double value) {
+
+		getProperty(category, key, value).set(value);
+	}
+
+	public void set(String category, String key, int value) {
+
+		getProperty(category, key, value).set(value);
+	}
+
+	public void set(String category, String key, String value) {
+
+		getProperty(category, key, value).set(value);
+	}
+
+	public ConfigHandler setConfiguration(Configuration config) {
+
+		modConfiguration = config;
+		modConfiguration.load();
+
+		return this;
+	}
+
+	public void sync(){
+		load();
+		save();
 	}
 
 }

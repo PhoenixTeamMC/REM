@@ -17,9 +17,9 @@ import phoenix.rem.main.CTabs;
 /**
  * Created by Elec332 on 5-2-2015.
  */
-public class BlockRegist {
+public class BlockRegister {
 
-    public static final BlockRegist instance = new BlockRegist();
+    public static final BlockRegister instance = new BlockRegister();
     static CreativeTabs tab = CTabs.TabMain;
 
     public static Block TestOre, RedstoneEngine;

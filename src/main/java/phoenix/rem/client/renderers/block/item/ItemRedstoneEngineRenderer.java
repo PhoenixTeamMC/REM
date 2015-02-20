@@ -1,25 +1,26 @@
 package phoenix.rem.client.renderers.block.item;
 
-import cpw.mods.fml.client.FMLClientHandler;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
+
 import org.lwjgl.opengl.GL11;
+
 import phoenix.rem.blocks.tile.engine.TERedstoneEngine;
 import phoenix.rem.client.renderers.model.ModelRedstoneEngine;
 import phoenix.rem.data.ModInfo;
+import cpw.mods.fml.client.FMLClientHandler;
 
 /**
  * Created by Elec332 on 8-2-2015.
  */
 public class ItemRedstoneEngineRenderer implements IItemRenderer {
+    private TERedstoneEngine dummyTE;
     private ModelRedstoneEngine modelRedstoneEngine;
     private TileEntitySpecialRenderer renderer;
-    private TERedstoneEngine dummyTE;
 
     public ItemRedstoneEngineRenderer(TileEntitySpecialRenderer renderer, TileEntity te) {
         modelRedstoneEngine = new ModelRedstoneEngine();
@@ -33,11 +34,6 @@ public class ItemRedstoneEngineRenderer implements IItemRenderer {
     //}
 
     @Override
-    public boolean shouldUseRenderHelper(IItemRenderer.ItemRenderType type, ItemStack item, IItemRenderer.ItemRendererHelper helper) {
-		return true;
-	}
-
-	@Override
 	public boolean handleRenderType(ItemStack item, ItemRenderType type)
 	{
 		switch (type)
@@ -55,28 +51,7 @@ public class ItemRedstoneEngineRenderer implements IItemRenderer {
 		}
 	}
 
-	@Override
-	public void renderItem(IItemRenderer.ItemRenderType type, ItemStack item, Object... data){
-		float scale = 0.08f;
-		switch (type) {
-		case ENTITY:
-			renderDCEngine((RenderBlocks) data[0], item, 0, 0, 0, scale);
-			break;
-		case EQUIPPED:
-			renderDCEngine((RenderBlocks) data[0], item, 0, 0, 0.5f, scale);
-			break;
-		case EQUIPPED_FIRST_PERSON:
-			renderDCEngine((RenderBlocks) data[0], item, +0.5f, 0.5f, +0.5f, scale);
-			break;
-		case INVENTORY:
-			renderDCEngine((RenderBlocks) data[0], item, -0.5f, -0.5f, -0.5f, scale);
-			break;
-		default:
-			break;
-		}
-	}
-
-    private void renderDCEngine(RenderBlocks render, ItemStack item, float x, float y, float z, float scaleq) {
+	private void renderDCEngine(RenderBlocks render, ItemStack item, float x, float y, float z, float scaleq) {
 
         /*GL11.glPushMatrix();
         GL11.glTranslatef(x, y, z);
@@ -113,4 +88,30 @@ public class ItemRedstoneEngineRenderer implements IItemRenderer {
 		modelRedstoneEngine.renderEngine();
 		GL11.glPopMatrix();
     }
+
+	@Override
+	public void renderItem(IItemRenderer.ItemRenderType type, ItemStack item, Object... data){
+		float scale = 0.08f;
+		switch (type) {
+		case ENTITY:
+			renderDCEngine((RenderBlocks) data[0], item, 0, 0, 0, scale);
+			break;
+		case EQUIPPED:
+			renderDCEngine((RenderBlocks) data[0], item, 0, 0, 0.5f, scale);
+			break;
+		case EQUIPPED_FIRST_PERSON:
+			renderDCEngine((RenderBlocks) data[0], item, +0.5f, 0.5f, +0.5f, scale);
+			break;
+		case INVENTORY:
+			renderDCEngine((RenderBlocks) data[0], item, -0.5f, -0.5f, -0.5f, scale);
+			break;
+		default:
+			break;
+		}
+	}
+
+    @Override
+    public boolean shouldUseRenderHelper(IItemRenderer.ItemRenderType type, ItemStack item, IItemRenderer.ItemRendererHelper helper) {
+		return true;
+	}
 }

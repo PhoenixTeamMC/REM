@@ -5,7 +5,6 @@ import phoenix.rem.api.power.BaseTileEngine;
 /**
  * Created by Elec332 on 10-2-2015.
  */
-@SuppressWarnings("JavadocReference")
 public class TEDieselEngine extends BaseTileEngine{ //} implements IFluidTank{
     @Override
     protected Boolean isRunning() {
