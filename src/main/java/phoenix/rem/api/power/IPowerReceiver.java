@@ -3,25 +3,23 @@ package phoenix.rem.api.power;
 import net.minecraftforge.common.util.ForgeDirection;
 
 /**
- * Created by Elec332 on 9-2-2015.
+ * Created by Elec332 and chbachman on 9-2-2015.
  */
 public interface IPowerReceiver {
 
-    public int maxSpeed();
+    int maxSpeed();
 
-    public int maxTorque();
+    int maxTorque();
 
-    public int minTorque();
+    int minTorque();
 
-    Boolean doesExplode();
+    boolean doesExplode();
 
-    public Boolean canReceivePowerFromSide(ForgeDirection direction);
+    boolean canReceivePowerFromSide(ForgeDirection direction);
 
-    public void setTorque(int i);
+    void recievePower(int torque, int speed);
+    
+    int getTorque();
 
-    public void setSpeed(int i);
-
-    public int getTorque();
-
-    public int getSpeed();
+    int getSpeed();
 }
